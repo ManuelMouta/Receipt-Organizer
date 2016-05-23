@@ -7,8 +7,12 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.manuel.receiptorganizer.activities.ListReceiptsActivity;
+import com.example.manuel.receiptorganizer.activities.SaveReceiptActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,8 +22,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     private Button addReceiptBtn;
     private Button receipListtBtn;
-    static final int REQUEST_IMAGE_CAPTURE = 1;
-    static final int REQUEST_TAKE_PHOTO = 1;
+    static final int REQUEST_TAKE_PHOTO = 0;
     String mCurrentPhotoPath;
 
     @Override
@@ -34,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dispatchTakePictureIntent();
+            }
+        });
+
+        receipListtBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ListReceiptsActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -61,16 +72,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_TAKE_PHOTO && resultCode != RESULT_OK){
+            try{
+                File file = new File(mCurrentPhotoPath);
+                if (file.exists()) {
+                    file.delete();
+                }
+            }catch(Exception e){
+                Log.e("ERROR: ",e.toString());
+            }
+        }
+        else if(requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK){
+            Intent intent = new Intent(MainActivity.this, SaveReceiptActivity.class);
+            startActivity(intent);
         }
     }
 
     private File createImageFile() throws IOException {
         // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String imageFileName = "Recibo   " + timeStamp + "   ";
 
         File storageDir = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES) +
@@ -92,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         );
 
         // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+        mCurrentPhotoPath = image.getAbsolutePath();
         return image;
     }
 
