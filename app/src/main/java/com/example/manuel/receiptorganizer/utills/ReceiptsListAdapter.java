@@ -1,13 +1,19 @@
 package com.example.manuel.receiptorganizer.utills;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.manuel.receiptorganizer.R;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -39,9 +45,23 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
     }
 
     @Override
-    public void onBindViewHolder(ReceiptsListAdapter.ViewHolder holder, int position) {
-        String receiptName = reciptList.get(position);
-        holder.receiptName.setText(receiptName);
+    public void onBindViewHolder(final ReceiptsListAdapter.ViewHolder holder, final int position) {
+        final String receiptName = reciptList.get(position);
+        final String finalReceiptName = receiptName.substring(0, receiptName.lastIndexOf(" "));
+        holder.receiptName.setText(finalReceiptName);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.setDataAndType(Uri.fromFile(new File(Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_PICTURES) +
+                        File.separator + "Receipts" +File.separator + receiptName)), "image/*");
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

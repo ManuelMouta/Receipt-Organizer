@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK){
             Intent intent = new Intent(MainActivity.this, SaveReceiptActivity.class);
+            intent.putExtra("receipPath",mCurrentPhotoPath);
             startActivity(intent);
         }
     }
