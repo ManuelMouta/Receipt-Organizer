@@ -13,17 +13,25 @@ import android.widget.Button;
 
 import com.example.manuel.receiptorganizer.activities.ListReceiptsActivity;
 import com.example.manuel.receiptorganizer.activities.SaveReceiptActivity;
+import com.example.manuel.receiptorganizer.database.ReceiptOperations;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
     private Button addReceiptBtn;
+
     private Button receipListtBtn;
+
     static final int REQUEST_TAKE_PHOTO = 0;
+
     String mCurrentPhotoPath;
+
+    public static ReceiptOperations receiptDBoperation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +55,30 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        receiptDBoperation = new ReceiptOperations(this);
+        receiptDBoperation.open();
+
+        List receipts = receiptDBoperation.getAllReceipts();
+        Log.i("Recibos",receipts.toString());
+    }
+
+    @Override
+    protected void onResume() {
+        receiptDBoperation.open();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        receiptDBoperation.close();
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        receiptDBoperation.close();
+        super.onStop();
     }
 
     private void dispatchTakePictureIntent() {

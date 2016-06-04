@@ -31,6 +31,7 @@
         android:background="@drawable/textinput_selector"
         />
     <EditText
+        android:id="@+id/receipt_total"
         android:layout_width="320dp"
         android:layout_height="40dp"
         android:gravity="center_vertical"
@@ -49,6 +50,7 @@
         android:layout_gravity="center_horizontal"
         android:textSize="20dp"/>
     <EditText
+        android:id="@+id/receipt_info"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine|text"
