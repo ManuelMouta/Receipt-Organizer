@@ -1,5 +1,6 @@
 package com.example.manuel.receiptorganizer.utills;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
@@ -8,11 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.manuel.receiptorganizer.MainActivity;
 import com.example.manuel.receiptorganizer.R;
+import com.example.manuel.receiptorganizer.activities.ReceiptInfoActivity;
 import com.example.manuel.receiptorganizer.objects.ReceiptObject;
 
 import java.io.File;
@@ -24,20 +28,28 @@ import java.util.List;
  */
 public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapter.ViewHolder> {
     private List<ReceiptObject> receipts;
+    private Context mContext;
 
-    public ReceiptsListAdapter() {
+    public ReceiptsListAdapter(Context ctx) {
         MainActivity.receiptDBoperation.open();
+        this.mContext = ctx;
         this.receipts = MainActivity.receiptDBoperation.getAllReceipts();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView receiptName;
         public TextView receiptTotal;
+        public ImageView info_icon;
+        public LinearLayout list_item_layout;
+        public LinearLayout info_icon_layout;
 
         public ViewHolder(View view) {
             super(view);
             receiptName = (TextView) view.findViewById(R.id.receipt_name);
             receiptTotal = (TextView) view.findViewById(R.id.receipt_total);
+            info_icon = (ImageView) view.findViewById(R.id.icon_info);
+            list_item_layout = (LinearLayout) view.findViewById(R.id.list_item_layout);
+            info_icon_layout = (LinearLayout) view.findViewById(R.id.info_icon_layout);
         }
     }
 
@@ -57,7 +69,16 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
         holder.receiptName.setText(receiptName);
         holder.receiptTotal.setText(Integer.toString(receiptTotal)+" €");
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.info_icon_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,ReceiptInfoActivity.class);
+                intent.putExtra("receiptInfo",receipts.get(position).getInfo());
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
+
+        holder.list_item_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

@@ -31,21 +31,11 @@ public class ListReceiptsActivity extends AppCompatActivity{
         setContentView(R.layout.list_of_receipts);
 
         receiptsList = (RecyclerView) findViewById(R.id.receipts_list);
-        /*receipts = new ArrayList<String>();
-
-        String path = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES).toString()+"/Receipts";
-        File f = new File(path);
-        File file[] = f.listFiles();
-        for (int i=0; i < file.length; i++)
-        {
-            receipts.add(file[i].getName());
-        }*/
 
         mLayoutManager = new LinearLayoutManager(this);
         receiptsList.setLayoutManager(mLayoutManager);
 
-        mAdapter = new ReceiptsListAdapter();
+        mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this);
         receiptsList.setAdapter(mAdapter);
 
     }

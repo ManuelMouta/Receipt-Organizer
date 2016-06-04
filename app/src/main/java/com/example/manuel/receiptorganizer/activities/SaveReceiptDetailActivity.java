@@ -47,7 +47,9 @@ public class SaveReceiptDetailActivity extends AppCompatActivity{
                     MainActivity.receiptDBoperation.addReceipt(
                             receiptName.getText().toString(),"Compras",receiptPath,Integer.parseInt((total.getText().toString())),info.getText().toString());
 
-                    finish();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
                 }catch (Exception e){
                     Toast.makeText(SaveReceiptDetailActivity.this,e.toString(),Toast.LENGTH_LONG).show();
                     Log.d("Save Error: ",e.toString());
@@ -56,4 +58,5 @@ public class SaveReceiptDetailActivity extends AppCompatActivity{
         });
     }
 }
+
 

@@ -32,6 +32,9 @@
         <activity
             android:name=".activities.SaveReceiptDetailActivity">
         </activity>
+        <activity
+            android:name=".activities.ReceiptInfoActivity">
+        </activity>
     </application>
 
 </manifest>
