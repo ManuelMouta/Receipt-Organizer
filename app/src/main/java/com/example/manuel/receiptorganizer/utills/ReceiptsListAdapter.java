@@ -32,10 +32,12 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView receiptName;
+        public TextView receiptTotal;
 
         public ViewHolder(View view) {
             super(view);
             receiptName = (TextView) view.findViewById(R.id.receipt_name);
+            receiptTotal = (TextView) view.findViewById(R.id.receipt_total);
         }
     }
 
@@ -50,8 +52,10 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
     @Override
     public void onBindViewHolder(final ReceiptsListAdapter.ViewHolder holder, final int position) {
         final String receiptName = receipts.get(position).getName();
-        //final String finalReceiptName = receiptName.substring(0, receiptName.lastIndexOf(" "));
+        final int receiptTotal = receipts.get(position).getTotal();
+
         holder.receiptName.setText(receiptName);
+        holder.receiptTotal.setText(Integer.toString(receiptTotal)+" €");
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

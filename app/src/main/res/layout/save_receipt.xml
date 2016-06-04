@@ -19,7 +19,7 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:background="@color/green"
+        android:background="@color/Snow"
         android:layout_weight="1">
 
         <ImageView
@@ -30,19 +30,23 @@
             android:background="@drawable/ic_shopping_cart_black_24dp"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Compras Refeições"
             android:textSize="22dp"/>
 
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/black"/>
     <LinearLayout
         android:id="@+id/type2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:background="@color/orange"
+        android:background="@color/DarkGray"
         android:layout_weight="1">
 
         <ImageView
@@ -53,19 +57,23 @@
             android:background="@drawable/ic_shopping_cart_black_24dp"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Contas Casa"
             android:textSize="22dp"/>
 
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/black"/>
     <LinearLayout
         android:id="@+id/type3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:background="@color/lightblue"
+        android:background="@color/Snow"
         android:layout_weight="1">
 
         <ImageView
@@ -76,19 +84,23 @@
             android:background="@drawable/ic_shopping_cart_black_24dp"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Garantias"
             android:textSize="22dp"/>
 
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/black"/>
     <LinearLayout
         android:id="@+id/type4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:background="@color/darkpurple"
+        android:background="@color/DarkGray"
         android:layout_weight="1">
 
         <ImageView
@@ -99,18 +111,28 @@
             android:background="@drawable/ic_shopping_cart_black_24dp"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Roupa"
             android:textSize="22dp"/>
+        <TextView
+            android:layout_width="2dp"
+            android:layout_marginLeft="-2dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:gravity=""/>
 
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/black"/>
     <LinearLayout
         android:id="@+id/type5"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:background="@color/red"
+        android:background="@color/Snow"
         android:gravity="center_vertical"
         android:layout_weight="1">
 
@@ -122,74 +144,11 @@
             android:background="@drawable/ic_shopping_cart_black_24dp"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Compras Diversas"
             android:textSize="22dp"/>
 
     </LinearLayout>
-
-    <!--<LinearLayout
-        android:id="@+id/line1"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginTop="70dp"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="70dp"
-            android:background="@drawable/ic_shopping_cart_black_24dp"/>
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/ic_favorite_black_24dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/line2"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="70dp"
-            android:background="@drawable/ic_shopping_cart_black_24dp"/>
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/ic_favorite_black_24dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/line3"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="70dp"
-            android:background="@drawable/ic_shopping_cart_black_24dp"/>
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/ic_favorite_black_24dp"/>
-
-    </LinearLayout>-->
 
 </LinearLayout>
