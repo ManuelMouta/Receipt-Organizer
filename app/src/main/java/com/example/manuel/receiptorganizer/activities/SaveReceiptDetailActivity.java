@@ -42,14 +42,7 @@ public class SaveReceiptDetailActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 try {
-                    /*String name_old_jpg = receiptPath.substring(receiptPath.lastIndexOf("/")+1);
-                    String name_old = name_old_jpg.substring(0,name_old_jpg.lastIndexOf("."));
-                    File from = new File(receiptPath, name_old);
-                    File to = new File(Environment.getExternalStoragePublicDirectory(
-                            Environment.DIRECTORY_PICTURES) +
-                            File.separator + "Receipts", receiptName.getText().toString());
-                    from.renameTo(to);*/
-                    //get file
+
                     MainActivity.receiptDBoperation.open();
                     MainActivity.receiptDBoperation.addReceipt(
                             receiptName.getText().toString(),"Compras",receiptPath,Integer.parseInt((total.getText().toString())),info.getText().toString());

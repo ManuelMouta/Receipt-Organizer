@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
         receiptDBoperation = new ReceiptOperations(this);
         receiptDBoperation.open();
 
-        List receipts = receiptDBoperation.getAllReceipts();
-        Log.i("Recibos",receipts.toString());
     }
 
     @Override

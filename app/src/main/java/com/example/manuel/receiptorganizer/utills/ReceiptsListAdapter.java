@@ -11,17 +11,24 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.manuel.receiptorganizer.MainActivity;
 import com.example.manuel.receiptorganizer.R;
+import com.example.manuel.receiptorganizer.objects.ReceiptObject;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by nb21910 on 22/05/16.
  */
 public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapter.ViewHolder> {
+    private List<ReceiptObject> receipts;
 
-    private ArrayList<String> reciptList;
+    public ReceiptsListAdapter() {
+        MainActivity.receiptDBoperation.open();
+        this.receipts = MainActivity.receiptDBoperation.getAllReceipts();
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView receiptName;
@@ -30,10 +37,6 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
             super(view);
             receiptName = (TextView) view.findViewById(R.id.receipt_name);
         }
-    }
-
-    public ReceiptsListAdapter(ArrayList<String> receipts) {
-        this.reciptList = receipts;
     }
 
     @Override
@@ -46,9 +49,9 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
 
     @Override
     public void onBindViewHolder(final ReceiptsListAdapter.ViewHolder holder, final int position) {
-        final String receiptName = reciptList.get(position);
-        final String finalReceiptName = receiptName.substring(0, receiptName.lastIndexOf(" "));
-        holder.receiptName.setText(finalReceiptName);
+        final String receiptName = receipts.get(position).getName();
+        //final String finalReceiptName = receiptName.substring(0, receiptName.lastIndexOf(" "));
+        holder.receiptName.setText(receiptName);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,9 +59,7 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
 
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
-                intent.setDataAndType(Uri.fromFile(new File(Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_PICTURES) +
-                        File.separator + "Receipts" +File.separator + receiptName)), "image/*");
+                intent.setDataAndType(Uri.fromFile(new File(receipts.get(position).getPath())), "image/*");
                 holder.itemView.getContext().startActivity(intent);
             }
         });
@@ -66,6 +67,6 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
 
     @Override
     public int getItemCount() {
-        return reciptList.size();
+        return receipts.size();
     }
 }
