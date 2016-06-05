@@ -31,4 +31,13 @@
         android:background="@drawable/textinput_selector"
         />
 
+    <Button
+        android:id="@+id/send_email_btn"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Enviar por Email"
+        android:background="@drawable/btn_selector"/>
+
 </LinearLayout>

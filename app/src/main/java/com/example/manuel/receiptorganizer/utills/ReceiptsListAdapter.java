@@ -74,6 +74,7 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
             public void onClick(View v) {
                 Intent intent = new Intent(mContext,ReceiptInfoActivity.class);
                 intent.putExtra("receiptInfo",receipts.get(position).getInfo());
+                intent.putExtra("path",receipts.get(position).getPath());
                 holder.itemView.getContext().startActivity(intent);
             }
         });
