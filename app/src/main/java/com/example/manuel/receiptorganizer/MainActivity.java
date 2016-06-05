@@ -14,6 +14,9 @@ import android.widget.Button;
 import com.example.manuel.receiptorganizer.activities.ListReceiptsActivity;
 import com.example.manuel.receiptorganizer.activities.SaveReceiptActivity;
 import com.example.manuel.receiptorganizer.database.ReceiptOperations;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.io.File;
 import java.io.IOException;
@@ -58,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
         receiptDBoperation = new ReceiptOperations(this);
         receiptDBoperation.open();
-
     }
 
     @Override

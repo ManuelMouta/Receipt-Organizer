@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.manuel.receiptorganizer.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.io.File;
 
@@ -46,5 +49,10 @@ public class ReceiptInfoActivity extends AppCompatActivity {
                 startActivity(Intent.createChooser(intent, "Choose an Email client :"));
             }
         });
+
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-5964546814777835/4429291305");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 }
