@@ -33,12 +33,15 @@ public class SaveReceiptActivity extends AppCompatActivity {
         btn5 = (LinearLayout) findViewById(R.id.type5);
         Intent intent = getIntent();
         final String receiptPath = intent.getStringExtra("receipPath");
+        final String receiptDate = intent.getStringExtra("receipDate");
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SaveReceiptActivity.this,SaveReceiptDetailActivity.class);
                 intent.putExtra("receiptPath",receiptPath);
+                intent.putExtra("receiptDate",receiptDate);
+                intent.putExtra("receiptCategory","1");
                 startActivity(intent);
             }
         });
@@ -47,6 +50,8 @@ public class SaveReceiptActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SaveReceiptActivity.this,SaveReceiptDetailActivity.class);
                 intent.putExtra("receiptPath",receiptPath);
+                intent.putExtra("receiptDate",receiptDate);
+                intent.putExtra("receiptCategory","2");
                 startActivity(intent);
             }
         });
@@ -55,6 +60,8 @@ public class SaveReceiptActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SaveReceiptActivity.this,SaveReceiptDetailActivity.class);
                 intent.putExtra("receiptPath",receiptPath);
+                intent.putExtra("receiptDate",receiptDate);
+                intent.putExtra("receiptCategory","3");
                 startActivity(intent);
             }
         });
@@ -63,6 +70,8 @@ public class SaveReceiptActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SaveReceiptActivity.this,SaveReceiptDetailActivity.class);
                 intent.putExtra("receiptPath",receiptPath);
+                intent.putExtra("receiptDate",receiptDate);
+                intent.putExtra("receiptCategory","4");
                 startActivity(intent);
             }
         });
@@ -71,6 +80,8 @@ public class SaveReceiptActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SaveReceiptActivity.this,SaveReceiptDetailActivity.class);
                 intent.putExtra("receiptPath",receiptPath);
+                intent.putExtra("receiptDate",receiptDate);
+                intent.putExtra("receiptCategory","5");
                 startActivity(intent);
             }
         });

@@ -30,15 +30,16 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
     private List<ReceiptObject> receipts;
     private Context mContext;
 
-    public ReceiptsListAdapter(Context ctx) {
+    public ReceiptsListAdapter(Context ctx,String filter) {
         MainActivity.receiptDBoperation.open();
         this.mContext = ctx;
-        this.receipts = MainActivity.receiptDBoperation.getAllReceipts();
+        this.receipts = filterData(filter);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView receiptName;
         public TextView receiptTotal;
+        public TextView receiptDate;
         public ImageView info_icon;
         public LinearLayout list_item_layout;
         public LinearLayout info_icon_layout;
@@ -47,6 +48,7 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
             super(view);
             receiptName = (TextView) view.findViewById(R.id.receipt_name);
             receiptTotal = (TextView) view.findViewById(R.id.receipt_total);
+            receiptDate = (TextView) view.findViewById(R.id.receipt_date);
             info_icon = (ImageView) view.findViewById(R.id.icon_info);
             list_item_layout = (LinearLayout) view.findViewById(R.id.list_item_layout);
             info_icon_layout = (LinearLayout) view.findViewById(R.id.info_icon_layout);
@@ -65,9 +67,11 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
     public void onBindViewHolder(final ReceiptsListAdapter.ViewHolder holder, final int position) {
         final String receiptName = receipts.get(position).getName();
         final int receiptTotal = receipts.get(position).getTotal();
+        final String receiptDate = receipts.get(position).getDate();
 
         holder.receiptName.setText(receiptName);
         holder.receiptTotal.setText(Integer.toString(receiptTotal)+" €");
+        holder.receiptDate.setText(receiptDate);
 
         holder.info_icon_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,5 +98,20 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
     @Override
     public int getItemCount() {
         return receipts.size();
+    }
+
+    private List<ReceiptObject> filterData(String filterCategoty){
+        List<ReceiptObject> receipts = MainActivity.receiptDBoperation.getAllReceipts();
+        List<ReceiptObject> receiptsFiltered = new ArrayList<>();
+        int i =0;
+        if(!filterCategoty.equals("0")) {
+            for (i = 0; i < receipts.size(); i++) {
+                if (receipts.get(i).getCategory().equals(filterCategoty))
+                    receiptsFiltered.add(receipts.get(i));
+            }
+        }else{
+            receiptsFiltered=receipts;
+        }
+        return receiptsFiltered;
     }
 }

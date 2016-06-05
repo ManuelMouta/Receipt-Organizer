@@ -34,6 +34,12 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:gravity="center"
+            android:text="Data"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center"
             android:text="Total"/>
 
         <TextView
@@ -76,30 +82,35 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/category1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:text="1"/>
             <Button
+                android:id="@+id/category2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:text="2"/>
             <Button
+                android:id="@+id/category3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:text="3"/>
             <Button
+                android:id="@+id/category4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:text="4"/>
             <Button
+                android:id="@+id/category5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"

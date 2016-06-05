@@ -17,6 +17,7 @@ public class DataBaseWrapper extends SQLiteOpenHelper {
     public static final String RECEIPT_CATEGORY = "_category";
     public static final String RECEIPT_TOTAL = "_total";
     public static final String RECEIPT_INFO = "_info";
+    public static final String RECEIPT_DATE = "_date";
 
     private static final String DATABASE_NAME = "Receipts.db";
     private static final int DATABASE_VERSION = 1;
@@ -27,7 +28,8 @@ public class DataBaseWrapper extends SQLiteOpenHelper {
             + RECEIPT_PATH + " text not null,"
             + RECEIPT_CATEGORY + " text not null,"
             + RECEIPT_TOTAL + " integer,"
-            + RECEIPT_INFO + " text);";
+            + RECEIPT_INFO + " text,"
+            + RECEIPT_DATE + " text);";
 
     public DataBaseWrapper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

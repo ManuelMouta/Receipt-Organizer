@@ -24,7 +24,8 @@ public class ReceiptOperations {
             DataBaseWrapper.RECEIPT_CATEGORY,
             DataBaseWrapper.RECEIPT_PATH,
             DataBaseWrapper.RECEIPT_TOTAL,
-            DataBaseWrapper.RECEIPT_INFO
+            DataBaseWrapper.RECEIPT_INFO,
+            DataBaseWrapper.RECEIPT_DATE
     };
     private SQLiteDatabase database;
 
@@ -40,7 +41,7 @@ public class ReceiptOperations {
         dbHelper.close();
     }
 
-    public ReceiptObject addReceipt(String name,String category,String path,int total,String info) {
+    public ReceiptObject addReceipt(String name,String category,String path,int total,String info,String Date) {
 
         ContentValues values = new ContentValues();
 
@@ -49,6 +50,7 @@ public class ReceiptOperations {
         values.put(DataBaseWrapper.RECEIPT_PATH, path);
         values.put(DataBaseWrapper.RECEIPT_TOTAL, total);
         values.put(DataBaseWrapper.RECEIPT_INFO, info);
+        values.put(DataBaseWrapper.RECEIPT_DATE, Date);
 
         long receiptId = database.insert(DataBaseWrapper.RECEIPTS, null, values);
 
@@ -96,6 +98,7 @@ public class ReceiptOperations {
         receipt.setPath(cursor.getString(3));
         receipt.setTotal(cursor.getInt(4));
         receipt.setInfo(cursor.getString(5));
+        receipt.setDate(cursor.getString(6));
 
         return receipt;
     }

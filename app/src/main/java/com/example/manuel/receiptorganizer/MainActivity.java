@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     static final int REQUEST_TAKE_PHOTO = 0;
 
     String mCurrentPhotoPath;
+    String mtimeStamp;
 
     public static ReceiptOperations receiptDBoperation;
 
@@ -118,14 +119,15 @@ public class MainActivity extends AppCompatActivity {
         else if(requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK){
             Intent intent = new Intent(MainActivity.this, SaveReceiptActivity.class);
             intent.putExtra("receipPath",mCurrentPhotoPath);
+            intent.putExtra("receipDate",mtimeStamp);
             startActivity(intent);
         }
     }
 
     private File createImageFile() throws IOException {
         // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        String imageFileName = "Recibo   " + timeStamp + "   ";
+        mtimeStamp = new SimpleDateFormat("dd-MM-yy").format(new Date());
+        String imageFileName = "Recibo   " + mtimeStamp + "   ";
 
         File storageDir = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES) +

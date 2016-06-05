@@ -32,6 +32,8 @@ public class SaveReceiptDetailActivity extends AppCompatActivity{
         setContentView(R.layout.receipt_detail);
         Intent intent = getIntent();
         final String receiptPath = intent.getStringExtra("receiptPath");
+        final String receiptDate = intent.getStringExtra("receiptDate");
+        final String receiptCategory = intent.getStringExtra("receiptCategory");
         receiptName = (EditText) findViewById(R.id.receipt_name_value);
         total = (EditText) findViewById(R.id.receipt_total);
         info = (EditText) findViewById(R.id.receipt_info);
@@ -45,7 +47,7 @@ public class SaveReceiptDetailActivity extends AppCompatActivity{
 
                     MainActivity.receiptDBoperation.open();
                     MainActivity.receiptDBoperation.addReceipt(
-                            receiptName.getText().toString(),"Compras",receiptPath,Integer.parseInt((total.getText().toString())),info.getText().toString());
+                            receiptName.getText().toString(),receiptCategory,receiptPath,Integer.parseInt((total.getText().toString())),info.getText().toString(),receiptDate);
 
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
