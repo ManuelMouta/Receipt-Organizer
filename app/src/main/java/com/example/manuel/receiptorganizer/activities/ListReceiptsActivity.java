@@ -26,6 +26,7 @@ public class ListReceiptsActivity extends AppCompatActivity{
     private ArrayList<String> receipts;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private Button categoryBtnClr;
     private Button categoryBtn1;
     private Button categoryBtn2;
     private Button categoryBtn3;
@@ -38,6 +39,7 @@ public class ListReceiptsActivity extends AppCompatActivity{
         setContentView(R.layout.list_of_receipts);
 
         receiptsList = (RecyclerView) findViewById(R.id.receipts_list);
+        categoryBtnClr = (Button) findViewById(R.id.category);
         categoryBtn1 = (Button) findViewById(R.id.category1);
         categoryBtn2 = (Button) findViewById(R.id.category2);
         categoryBtn3 = (Button) findViewById(R.id.category3);
@@ -50,6 +52,13 @@ public class ListReceiptsActivity extends AppCompatActivity{
         mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"0");
         receiptsList.setAdapter(mAdapter);
 
+        categoryBtnClr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"0");
+                receiptsList.setAdapter(mAdapter);
+            }
+        });
         categoryBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

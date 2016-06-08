@@ -28,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Button addReceiptBtn;
 
-    private Button receipListtBtn;
+    private Button receiptListBtn;
+
+    private Button overviewListBtn;
 
     static final int REQUEST_TAKE_PHOTO = 0;
 
@@ -43,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         addReceiptBtn = (Button) findViewById(R.id.new_receipt);
-        receipListtBtn = (Button) findViewById(R.id.list_receipts_btn);
+        receiptListBtn = (Button) findViewById(R.id.list_receipts_btn);
+        overviewListBtn = (Button) findViewById(R.id.overview_receipts_btn);
 
         addReceiptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +55,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        receipListtBtn.setOnClickListener(new View.OnClickListener() {
+        receiptListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ListReceiptsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        overviewListBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,ListReceiptsActivity.class);

@@ -23,4 +23,12 @@
         android:text="Lista de Recibos"
         android:background="@drawable/btn_selector"/>
 
+    <Button
+        android:id="@+id/overview_receipts_btn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/list_receipts_btn"
+        android:text="Resumo"
+        android:background="@drawable/btn_selector"/>
+
 </RelativeLayout>
