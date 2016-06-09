@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.manuel.receiptorganizer.activities.ListReceiptsActivity;
+import com.example.manuel.receiptorganizer.activities.OverviewReceiptActivity;
 import com.example.manuel.receiptorganizer.activities.SaveReceiptActivity;
 import com.example.manuel.receiptorganizer.database.ReceiptOperations;
 import com.google.android.gms.ads.AdRequest;
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         overviewListBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,ListReceiptsActivity.class);
+                Intent intent = new Intent(MainActivity.this,OverviewReceiptActivity.class);
                 startActivity(intent);
             }
         });
