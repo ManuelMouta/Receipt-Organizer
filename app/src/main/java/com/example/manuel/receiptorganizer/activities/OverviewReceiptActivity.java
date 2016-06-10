@@ -1,5 +1,8 @@
 package com.example.manuel.receiptorganizer.activities;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -17,19 +20,31 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.manuel.receiptorganizer.MainActivity;
 import com.example.manuel.receiptorganizer.R;
 import com.example.manuel.receiptorganizer.chartdisplay.DemoBase;
+import com.example.manuel.receiptorganizer.chartdisplay.MyValueFormatter;
+import com.example.manuel.receiptorganizer.chartdisplay.MyYAxisValueFormatter;
+import com.example.manuel.receiptorganizer.fragments.AnnualResumeFragment;
+import com.example.manuel.receiptorganizer.fragments.MonthlyResumeFragment;
 import com.example.manuel.receiptorganizer.objects.ReceiptObject;
 import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
@@ -44,6 +59,8 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
         OnChartValueSelectedListener {
 
     private PieChart mChart;
+
+    private BarChart mBarChart;
 
     private SeekBar mSeekBarX, mSeekBarY;
 
@@ -64,96 +81,133 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_piechart);
 
-        MainActivity.receiptDBoperation.open();
-        receipts = MainActivity.receiptDBoperation.getAllReceipts();
-
-        tvX = (TextView) findViewById(R.id.tvXMax);
-        tvY = (TextView) findViewById(R.id.tvYMax);
-
         overviewBtn = (TextView) findViewById(R.id.btn1);
         annualResumeBtn = (TextView) findViewById(R.id.btn2);
 
         overviewBtn.setBackgroundColor(getResources().getColor(R.color.darkblue));
-        overviewBtn.setTextColor(Color.WHITE);
         annualResumeBtn.setBackgroundColor(Color.WHITE);
+        overviewBtn.setTextColor(Color.WHITE);
         annualResumeBtn.setTextColor(Color.BLACK);
 
-        mSeekBarX = (SeekBar) findViewById(R.id.seekBar1);
-        mSeekBarY = (SeekBar) findViewById(R.id.seekBar2);
+        /*Fragment fr = new MonthlyResumeFragment();
 
-        mSeekBarY.setProgress(10);
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.chart_fragment, fr);
+        fragmentTransaction.commit();*/
 
-        mSeekBarX.setOnSeekBarChangeListener(this);
-        mSeekBarY.setOnSeekBarChangeListener(this);
-
-        mChart = (PieChart) findViewById(R.id.chart1);
-        mChart.setUsePercentValues(true);
-        mChart.setDescription("");
-        mChart.setExtraOffsets(5, 10, 5, 5);
-
-        mChart.setDragDecelerationFrictionCoef(0.95f);
-
-        tf = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
-
-        mChart.setCenterTextTypeface(Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf"));
-        //mChart.setCenterText(generateCenterSpannableText());
-
-        mChart.setDrawHoleEnabled(true);
-        mChart.setHoleColor(Color.WHITE);
-
-        mChart.setTransparentCircleColor(Color.WHITE);
-        mChart.setTransparentCircleAlpha(110);
-
-        mChart.setHoleRadius(58f);
-        mChart.setTransparentCircleRadius(61f);
-
-        mChart.setDrawCenterText(true);
-
-        mChart.setRotationAngle(0);
-        // enable rotation of the chart by touch
-        mChart.setRotationEnabled(true);
-        mChart.setHighlightPerTapEnabled(true);
-
-        // mChart.setUnit(" €");
-        // mChart.setDrawUnitsInChart(true);
-
-        // add a selection listener
-        mChart.setOnChartValueSelectedListener(this);
-
-        setData(3, 100);
-
-        mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
-        // mChart.spin(2000, 0, 360);
-
-        Legend l = mChart.getLegend();
-        l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART);
-        l.setXEntrySpace(7f);
-        l.setYEntrySpace(0f);
-        l.setYOffset(0f);
-
-        final ColorStateList oldColors =  overviewBtn.getTextColors();
+//      final ColorStateList oldColors =  overviewBtn.getTextColors();
 
         overviewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 overviewBtn.setBackgroundColor(getResources().getColor(R.color.darkblue));
+                annualResumeBtn.setBackgroundColor(Color.WHITE);
                 overviewBtn.setTextColor(Color.WHITE);
-                annualResumeBtn.setBackgroundColor(oldColors.getDefaultColor());
                 annualResumeBtn.setTextColor(Color.BLACK);
+
+                Fragment fr = new MonthlyResumeFragment();
+
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                fragmentTransaction.replace(R.id.chart_fragment, fr);
+                fragmentTransaction.commit();
             }
         });
         annualResumeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 annualResumeBtn.setBackgroundColor(getResources().getColor(R.color.darkblue));
+                overviewBtn.setBackgroundColor(Color.WHITE);
                 annualResumeBtn.setTextColor(Color.WHITE);
-                overviewBtn.setBackgroundColor(oldColors.getDefaultColor());
                 overviewBtn.setTextColor(Color.BLACK);
+
+                Fragment fr = new AnnualResumeFragment();
+
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                fragmentTransaction.replace(R.id.chart_fragment, fr);
+                fragmentTransaction.commit();
             }
         });
     }
 
+    /*private void startBarChart(){
+        tvX = (TextView) findViewById(R.id.tvXMax);
+        tvY = (TextView) findViewById(R.id.tvYMax);
+
+        mSeekBarX = (SeekBar) findViewById(R.id.seekBar1);
+        mSeekBarX.setOnSeekBarChangeListener(this);
+
+        mSeekBarY = (SeekBar) findViewById(R.id.seekBar2);
+        mSeekBarY.setOnSeekBarChangeListener(this);
+
+        mBarChart = (BarChart) findViewById(R.id.chart2);
+        mBarChart.setOnChartValueSelectedListener(this);
+
+        mBarChart.setDescription("");
+
+        // if more than 60 entries are displayed in the chart, no values will be
+        // drawn
+        mBarChart.setMaxVisibleValueCount(60);
+
+        // scaling can now only be done on x- and y-axis separately
+        mBarChart.setPinchZoom(false);
+
+        mBarChart.setDrawGridBackground(false);
+        mBarChart.setDrawBarShadow(false);
+
+        mBarChart.setDrawValueAboveBar(false);
+
+        // change the position of the y-labels
+        YAxis leftAxis = mBarChart.getAxisLeft();
+        leftAxis.setValueFormatter(new MyYAxisValueFormatter());
+        leftAxis.setAxisMinValue(0f); // this replaces setStartAtZero(true)
+        mBarChart.getAxisRight().setEnabled(false);
+
+        XAxis xLabels = mBarChart.getXAxis();
+        xLabels.setPosition(XAxis.XAxisPosition.TOP);
+
+        // mChart.setDrawXLabels(false);
+        // mChart.setDrawYLabels(false);
+
+        // setting data
+        mSeekBarX.setProgress(12);
+        mSeekBarY.setProgress(100);
+
+        Legend l = mBarChart.getLegend();
+        l.setPosition(Legend.LegendPosition.BELOW_CHART_RIGHT);
+        l.setFormSize(8f);
+        l.setFormToTextSpace(4f);
+        l.setXEntrySpace(6f);
+    }*/
+
     @Override
+    public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
+
+    }
+
+    @Override
+    public void onNothingSelected() {
+
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.pie, menu);
         return true;
@@ -161,61 +215,134 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if(pieChartActive) {
+            switch (item.getItemId()) {
+                case R.id.actionToggleValues: {
+                    for (IDataSet<?> set : mChart.getData().getDataSets())
+                        set.setDrawValues(!set.isDrawValuesEnabled());
 
-        switch (item.getItemId()) {
-            case R.id.actionToggleValues: {
-                for (IDataSet<?> set : mChart.getData().getDataSets())
-                    set.setDrawValues(!set.isDrawValuesEnabled());
+                    mChart.invalidate();
+                    break;
+                }
+                case R.id.actionToggleHole: {
+                    if (mChart.isDrawHoleEnabled())
+                        mChart.setDrawHoleEnabled(false);
+                    else
+                        mChart.setDrawHoleEnabled(true);
+                    mChart.invalidate();
+                    break;
+                }
+                case R.id.actionDrawCenter: {
+                    if (mChart.isDrawCenterTextEnabled())
+                        mChart.setDrawCenterText(false);
+                    else
+                        mChart.setDrawCenterText(true);
+                    mChart.invalidate();
+                    break;
+                }
+                case R.id.actionToggleXVals: {
 
-                mChart.invalidate();
-                break;
+                    mChart.setDrawSliceText(!mChart.isDrawSliceTextEnabled());
+                    mChart.invalidate();
+                    break;
+                }
+                case R.id.actionSave: {
+                    // mChart.saveToGallery("title"+System.currentTimeMillis());
+                    mChart.saveToPath("title" + System.currentTimeMillis(), "");
+                    break;
+                }
+                case R.id.actionTogglePercent:
+                    mChart.setUsePercentValues(!mChart.isUsePercentValuesEnabled());
+                    mChart.invalidate();
+                    break;
+                case R.id.animateX: {
+                    mChart.animateX(1400);
+                    break;
+                }
+                case R.id.animateY: {
+                    mChart.animateY(1400);
+                    break;
+                }
+                case R.id.animateXY: {
+                    mChart.animateXY(1400, 1400);
+                    break;
+                }
+                case R.id.actionToggleSpin: {
+                    mChart.spin(1000, mChart.getRotationAngle(), mChart.getRotationAngle() + 360, Easing.EasingOption.EaseInCubic);
+                    break;
+                }
             }
-            case R.id.actionToggleHole: {
-                if (mChart.isDrawHoleEnabled())
-                    mChart.setDrawHoleEnabled(false);
-                else
-                    mChart.setDrawHoleEnabled(true);
-                mChart.invalidate();
-                break;
-            }
-            case R.id.actionDrawCenter: {
-                if (mChart.isDrawCenterTextEnabled())
-                    mChart.setDrawCenterText(false);
-                else
-                    mChart.setDrawCenterText(true);
-                mChart.invalidate();
-                break;
-            }
-            case R.id.actionToggleXVals: {
+        }else{
+            switch (item.getItemId()) {
+                case R.id.actionToggleValues: {
+                    List<IBarDataSet> sets = mBarChart.getData()
+                            .getDataSets();
 
-                mChart.setDrawSliceText(!mChart.isDrawSliceTextEnabled());
-                mChart.invalidate();
-                break;
-            }
-            case R.id.actionSave: {
-                // mChart.saveToGallery("title"+System.currentTimeMillis());
-                mChart.saveToPath("title" + System.currentTimeMillis(), "");
-                break;
-            }
-            case R.id.actionTogglePercent:
-                mChart.setUsePercentValues(!mChart.isUsePercentValuesEnabled());
-                mChart.invalidate();
-                break;
-            case R.id.animateX: {
-                mChart.animateX(1400);
-                break;
-            }
-            case R.id.animateY: {
-                mChart.animateY(1400);
-                break;
-            }
-            case R.id.animateXY: {
-                mChart.animateXY(1400, 1400);
-                break;
-            }
-            case R.id.actionToggleSpin: {
-                mChart.spin(1000, mChart.getRotationAngle(), mChart.getRotationAngle() + 360, Easing.EasingOption.EaseInCubic);
-                break;
+                    for (IBarDataSet iSet : sets) {
+
+                        BarDataSet set = (BarDataSet) iSet;
+                        set.setDrawValues(!set.isDrawValuesEnabled());
+                    }
+
+                    mBarChart.invalidate();
+                    break;
+                }
+                case R.id.actionToggleHighlight: {
+                    if(mBarChart.getData() != null) {
+                        mBarChart.getData().setHighlightEnabled(!mChart.getData().isHighlightEnabled());
+                        mBarChart.invalidate();
+                    }
+                    break;
+                }
+                case R.id.actionTogglePinch: {
+                    if (mBarChart.isPinchZoomEnabled())
+                        mBarChart.setPinchZoom(false);
+                    else
+                        mBarChart.setPinchZoom(true);
+
+                    mBarChart.invalidate();
+                    break;
+                }
+                case R.id.actionToggleAutoScaleMinMax: {
+                    mBarChart.setAutoScaleMinMaxEnabled(!mBarChart.isAutoScaleMinMaxEnabled());
+                    mBarChart.notifyDataSetChanged();
+                    break;
+                }
+                case R.id.actionToggleBarBorders: {
+                    for (IBarDataSet set : mBarChart.getData().getDataSets())
+                        ((BarDataSet)set).setBarBorderWidth(set.getBarBorderWidth() == 1.f ? 0.f : 1.f);
+
+                    mChart.invalidate();
+                    break;
+                }
+                case R.id.actionToggleHighlightArrow: {
+                    if (mBarChart.isDrawHighlightArrowEnabled())
+                        mBarChart.setDrawHighlightArrow(false);
+                    else
+                        mBarChart.setDrawHighlightArrow(true);
+                    mBarChart.invalidate();
+                    break;
+                }
+                case R.id.animateX: {
+                    mBarChart.animateX(3000);
+                    break;
+                }
+                case R.id.animateY: {
+                    mBarChart.animateY(3000);
+                    break;
+                }
+                case R.id.animateXY: {
+
+                    mBarChart.animateXY(3000, 3000);
+                    break;
+                }
+                case R.id.actionSave: {
+                    if (mBarChart.saveToGallery("title" + System.currentTimeMillis(), 50)) {
+                        Toast.makeText(getApplicationContext(), "Saving SUCCESSFUL!", Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(getApplicationContext(), "Saving FAILED!", Toast.LENGTH_SHORT).show();
+                    break;
+                }
             }
         }
         return true;
@@ -223,24 +350,96 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        if(pieChartActive) {
+            tvX.setText("" + (mSeekBarX.getProgress() + 1));
+            tvY.setText("" + (mSeekBarY.getProgress()));
 
-        tvX.setText("" + (mSeekBarX.getProgress() + 1));
-        tvY.setText("" + (mSeekBarY.getProgress()));
+            setData(mSeekBarX.getProgress(), mSeekBarY.getProgress());
+        }else{
+            tvX.setText("" + (mSeekBarX.getProgress() + 1));
+            tvY.setText("" + (mSeekBarY.getProgress()));
 
-        setData(mSeekBarX.getProgress(), mSeekBarY.getProgress());
+            ArrayList<String> xVals = new ArrayList<String>();
+            for (int i = 0; i < mSeekBarX.getProgress() + 1; i++) {
+                xVals.add(mMonths[i % mMonths.length]);
+            }
+
+            ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
+
+            for (int i = 0; i < mSeekBarX.getProgress() + 1; i++) {
+                float mult = (mSeekBarY.getProgress() + 1);
+                float val1 = (float) (Math.random() * mult) + mult / 3;
+                float val2 = (float) (Math.random() * mult) + mult / 3;
+                float val3 = (float) (Math.random() * mult) + mult / 3;
+
+                yVals1.add(new BarEntry(new float[] { val1, val2, val3 }, i));
+            }
+
+            BarDataSet set1;
+
+            if (mBarChart.getData() != null &&
+                    mBarChart.getData().getDataSetCount() > 0) {
+                set1 = (BarDataSet)mBarChart.getData().getDataSetByIndex(0);
+                set1.setYVals(yVals1);
+                mBarChart.getData().setXVals(xVals);
+                mBarChart.getData().notifyDataChanged();
+                mBarChart.notifyDataSetChanged();
+            } else {
+                set1 = new BarDataSet(yVals1, "Statistics Vienna 2014");
+                set1.setColors(getColors());
+                set1.setStackLabels(new String[]{"Births", "Divorces", "Marriages"});
+
+                ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
+                dataSets.add(set1);
+
+                BarData data = new BarData(xVals, dataSets);
+                data.setValueFormatter(new MyValueFormatter());
+
+                mBarChart.setData(data);
+            }
+
+            mBarChart.invalidate();
+        }
+    }
+
+    private float getCategoryPercent(String Category){
+        float total = 0;
+
+        for(int i = 0;i<receipts.size();i++){
+            if(receipts.get(i).getCategory().equals(Category))
+                total+=receipts.get(i).getTotal();
+        }
+        return (total/getReceiptsTotal())*100;
+    }
+
+    private float getReceiptsTotal(){
+        float total = 0;
+
+        for(int i = 0;i<receipts.size();i++){
+            total+=receipts.get(i).getTotal();
+        }
+        return total;
     }
 
     private void setData(int count, float range) {
 
         float mult = range;
+        count = 5;
+        range = 100;
+        ArrayList<Float> categoryValues = new ArrayList<Float>();
+        categoryValues.add(getCategoryPercent("1"));
+        categoryValues.add(getCategoryPercent("2"));
+        categoryValues.add(getCategoryPercent("3"));
+        categoryValues.add(getCategoryPercent("4"));
+        categoryValues.add(getCategoryPercent("5"));
 
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
 
         // IMPORTANT: In a PieChart, no values (Entry) should have the same
         // xIndex (even if from different DataSets), since no values can be
         // drawn above each other.
-        for (int i = 0; i < count + 1; i++) {
-            yVals1.add(new Entry((float) (Math.random() * mult) + mult / 5, i));
+        for (int i = 0; i < categoryValues.size(); i++) {
+            yVals1.add(new Entry(categoryValues.get(i), i));
         }
 
         ArrayList<String> xVals = new ArrayList<String>();
@@ -248,7 +447,7 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
         for (int i = 0; i < count + 1; i++)
             xVals.add(mParties[i % mParties.length]);
 
-        PieDataSet dataSet = new PieDataSet(yVals1, "Election Results");
+        PieDataSet dataSet = new PieDataSet(yVals1, "Categorias");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
 
@@ -327,5 +526,19 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
         // TODO Auto-generated method stub
 
     }
+
+    private int[] getColors() {
+
+        int stacksize = 3;
+
+        // have as many colors as stack-values per entry
+        int[] colors = new int[stacksize];
+
+        for (int i = 0; i < stacksize; i++) {
+            colors[i] = ColorTemplate.VORDIPLOM_COLORS[i];
+        }
+
+        return colors;
+    }*/
 }
 
