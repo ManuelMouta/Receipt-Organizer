@@ -1,5 +1,6 @@
 package com.example.manuel.receiptorganizer.activities;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -11,12 +12,16 @@ import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.manuel.receiptorganizer.MainActivity;
 import com.example.manuel.receiptorganizer.R;
 import com.example.manuel.receiptorganizer.chartdisplay.DemoBase;
+import com.example.manuel.receiptorganizer.objects.ReceiptObject;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -30,6 +35,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by nb21910 on 08/06/16.
@@ -38,10 +44,18 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
         OnChartValueSelectedListener {
 
     private PieChart mChart;
+
     private SeekBar mSeekBarX, mSeekBarY;
+
     private TextView tvX, tvY;
 
+    private List<ReceiptObject> receipts;
+
     private Typeface tf;
+
+    private TextView overviewBtn;
+
+    private TextView annualResumeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +64,19 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_piechart);
 
+        MainActivity.receiptDBoperation.open();
+        receipts = MainActivity.receiptDBoperation.getAllReceipts();
+
         tvX = (TextView) findViewById(R.id.tvXMax);
         tvY = (TextView) findViewById(R.id.tvYMax);
+
+        overviewBtn = (TextView) findViewById(R.id.btn1);
+        annualResumeBtn = (TextView) findViewById(R.id.btn2);
+
+        overviewBtn.setBackgroundColor(getResources().getColor(R.color.darkblue));
+        overviewBtn.setTextColor(Color.WHITE);
+        annualResumeBtn.setBackgroundColor(Color.WHITE);
+        annualResumeBtn.setTextColor(Color.BLACK);
 
         mSeekBarX = (SeekBar) findViewById(R.id.seekBar1);
         mSeekBarY = (SeekBar) findViewById(R.id.seekBar2);
@@ -71,7 +96,7 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
         tf = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
 
         mChart.setCenterTextTypeface(Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf"));
-        mChart.setCenterText(generateCenterSpannableText());
+        //mChart.setCenterText(generateCenterSpannableText());
 
         mChart.setDrawHoleEnabled(true);
         mChart.setHoleColor(Color.WHITE);
@@ -105,6 +130,27 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
         l.setXEntrySpace(7f);
         l.setYEntrySpace(0f);
         l.setYOffset(0f);
+
+        final ColorStateList oldColors =  overviewBtn.getTextColors();
+
+        overviewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                overviewBtn.setBackgroundColor(getResources().getColor(R.color.darkblue));
+                overviewBtn.setTextColor(Color.WHITE);
+                annualResumeBtn.setBackgroundColor(oldColors.getDefaultColor());
+                annualResumeBtn.setTextColor(Color.BLACK);
+            }
+        });
+        annualResumeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                annualResumeBtn.setBackgroundColor(getResources().getColor(R.color.darkblue));
+                annualResumeBtn.setTextColor(Color.WHITE);
+                overviewBtn.setBackgroundColor(oldColors.getDefaultColor());
+                overviewBtn.setTextColor(Color.BLACK);
+            }
+        });
     }
 
     @Override
