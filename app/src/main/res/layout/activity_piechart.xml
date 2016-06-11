@@ -16,13 +16,12 @@
         android:layout_width="match_parent">
     </include>
 
-    <fragment
+    <FrameLayout
         android:id="@+id/chart_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/overvire_menu"
-        android:name="com.example.manuel.receiptorganizer.fragments.MonthlyResumeFragment">
-    </fragment>
+        android:layout_below="@+id/overvire_menu">
+    </FrameLayout>
     
 
 

@@ -1,12 +1,12 @@
 package com.example.manuel.receiptorganizer.activities;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -58,18 +58,6 @@ import java.util.List;
 public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekBarChangeListener,
         OnChartValueSelectedListener {
 
-    private PieChart mChart;
-
-    private BarChart mBarChart;
-
-    private SeekBar mSeekBarX, mSeekBarY;
-
-    private TextView tvX, tvY;
-
-    private List<ReceiptObject> receipts;
-
-    private Typeface tf;
-
     private TextView overviewBtn;
 
     private TextView annualResumeBtn;
@@ -79,6 +67,13 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment fr = new MonthlyResumeFragment();
+        fragmentTransaction.add(R.id.chart_fragment, fr);
+        fragmentTransaction.commit();
+
         setContentView(R.layout.activity_piechart);
 
         overviewBtn = (TextView) findViewById(R.id.btn1);
@@ -106,12 +101,12 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
                 overviewBtn.setTextColor(Color.WHITE);
                 annualResumeBtn.setTextColor(Color.BLACK);
 
+                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 Fragment fr = new MonthlyResumeFragment();
-
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 fragmentTransaction.replace(R.id.chart_fragment, fr);
                 fragmentTransaction.commit();
+
             }
         });
         annualResumeBtn.setOnClickListener(new View.OnClickListener() {
@@ -122,10 +117,9 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
                 annualResumeBtn.setTextColor(Color.WHITE);
                 overviewBtn.setTextColor(Color.BLACK);
 
+                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 Fragment fr = new AnnualResumeFragment();
-
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 fragmentTransaction.replace(R.id.chart_fragment, fr);
                 fragmentTransaction.commit();
             }
