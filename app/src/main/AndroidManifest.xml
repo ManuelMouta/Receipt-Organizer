@@ -40,6 +40,9 @@
         <activity
             android:name=".activities.OverviewReceiptActivity">
         </activity>
+        <activity
+            android:name=".activities.SettingsActivity">
+        </activity>
     </application>
 
 </manifest>
