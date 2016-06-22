@@ -14,6 +14,7 @@ import android.widget.Button;
 import com.example.manuel.receiptorganizer.activities.ListReceiptsActivity;
 import com.example.manuel.receiptorganizer.activities.OverviewReceiptActivity;
 import com.example.manuel.receiptorganizer.activities.SaveReceiptActivity;
+import com.example.manuel.receiptorganizer.activities.SettingsActivity;
 import com.example.manuel.receiptorganizer.database.ReceiptOperations;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button overviewListBtn;
 
+    private Button settingsBtn;
+
     static final int REQUEST_TAKE_PHOTO = 0;
 
     String mCurrentPhotoPath;
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         addReceiptBtn = (Button) findViewById(R.id.new_receipt);
         receiptListBtn = (Button) findViewById(R.id.list_receipts_btn);
         overviewListBtn = (Button) findViewById(R.id.overview_receipts_btn);
+        settingsBtn = (Button) findViewById(R.id.settings);
 
         addReceiptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,OverviewReceiptActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
                 startActivity(intent);
             }
         });

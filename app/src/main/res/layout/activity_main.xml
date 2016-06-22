@@ -3,14 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:background="@drawable/splash_screen"
     tools:context="com.example.manuel.receiptorganizer.MainActivity">
+
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/ic_settings_black_24dp"/>
 
     <Button
         android:id="@+id/new_receipt"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="340dp"
         android:text="Adicionar Recibo"
         android:background="@drawable/btn_selector"/>
@@ -19,6 +28,7 @@
         android:id="@+id/list_receipts_btn"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/new_receipt"
         android:text="Lista de Recibos"
         android:background="@drawable/btn_selector"/>
@@ -27,6 +37,7 @@
         android:id="@+id/overview_receipts_btn"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/list_receipts_btn"
         android:text="Resumo"
         android:background="@drawable/btn_selector"/>

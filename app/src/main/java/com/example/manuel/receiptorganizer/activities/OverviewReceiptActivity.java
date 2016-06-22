@@ -1,56 +1,20 @@
 package com.example.manuel.receiptorganizer.activities;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.RelativeSizeSpan;
-import android.text.style.StyleSpan;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.manuel.receiptorganizer.MainActivity;
 import com.example.manuel.receiptorganizer.R;
 import com.example.manuel.receiptorganizer.chartdisplay.DemoBase;
-import com.example.manuel.receiptorganizer.chartdisplay.MyValueFormatter;
-import com.example.manuel.receiptorganizer.chartdisplay.MyYAxisValueFormatter;
 import com.example.manuel.receiptorganizer.fragments.AnnualResumeFragment;
 import com.example.manuel.receiptorganizer.fragments.MonthlyResumeFragment;
-import com.example.manuel.receiptorganizer.objects.ReceiptObject;
-import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by nb21910 on 08/06/16.
