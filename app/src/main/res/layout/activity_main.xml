@@ -3,43 +3,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_screen"
+    android:background="@color/Backgroud"
     tools:context="com.example.manuel.receiptorganizer.MainActivity">
 
-    <Button
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Receipts"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="36sp"/>
+    
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/agenda"/>
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"
+        android:layout_marginTop="10dp"
+        android:text="Organization is Everything"/>
+
+    <ImageView
         android:id="@+id/settings"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/ic_settings_black_24dp"/>
+        android:src="@drawable/ic_settings_black_24dp"/>
 
-    <Button
+    <RelativeLayout
         android:id="@+id/new_receipt"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="340dp"
-        android:text="Adicionar Recibo"
-        android:background="@drawable/btn_selector"/>
+        android:layout_below="@+id/subtitle"
+        android:background="@drawable/landpagebtn1"
+        >
 
-    <Button
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New Receipt"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:paddingLeft="20dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/list_receipts_btn"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/new_receipt"
-        android:text="Lista de Recibos"
-        android:background="@drawable/btn_selector"/>
+        android:background="@drawable/landpagebtn1"
+        >
 
-    <Button
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View My Receipts"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:paddingLeft="20dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/overview_receipts_btn"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/list_receipts_btn"
-        android:text="Resumo"
-        android:background="@drawable/btn_selector"/>
+        android:background="@drawable/landpagebtn1"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resume"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:paddingLeft="20dp"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

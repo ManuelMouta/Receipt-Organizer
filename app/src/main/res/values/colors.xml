@@ -168,4 +168,19 @@
     <color name="DarkBlue">#00008B</color>
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
+    <color name="Backgroud">#f8f8f8</color>
+
+    <!--Home page-->
+    <color name="btn1">#3127b0</color>
+    <color name="btn2">#74bac1</color>
+    <color name="btn3">#aae562</color>
+
+    <!--Receipts Category-->
+    <color name="category1">#aae561</color>
+    <color name="category2">#f5a623</color>
+    <color name="category3">#f8e71c</color>
+    <color name="category4">#4a90e2</color>
+    <color name="category5">#50e3c2</color>
+    <color name="category6">#332eb5</color>
+
 </resources>

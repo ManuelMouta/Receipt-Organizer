@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.manuel.receiptorganizer.MainActivity;
 import com.example.manuel.receiptorganizer.R;
 import com.example.manuel.receiptorganizer.activities.ReceiptInfoActivity;
+import com.example.manuel.receiptorganizer.objects.CategoryObject;
 import com.example.manuel.receiptorganizer.objects.ReceiptObject;
 
 import java.io.File;
@@ -29,11 +30,13 @@ import java.util.List;
 public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapter.ViewHolder> {
     private List<ReceiptObject> receipts;
     private Context mContext;
+    private List<CategoryObject> categories;
 
     public ReceiptsListAdapter(Context ctx,String filter) {
         MainActivity.receiptDBoperation.open();
         this.mContext = ctx;
         this.receipts = filterData(filter);
+        this.categories = MainActivity.categoryBDoperations.getAllCategories();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -113,5 +116,13 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
             receiptsFiltered=receipts;
         }
         return receiptsFiltered;
+    }
+
+    private String getCategoryName(String categorieNumber) {
+        for(int i = 0;i<categories.size();i++){
+            if(categorieNumber.equals(categories.get(i).getCategoryValue()))
+                return categories.get(i).getCategoryName();
+        }
+        return "";
     }
 }

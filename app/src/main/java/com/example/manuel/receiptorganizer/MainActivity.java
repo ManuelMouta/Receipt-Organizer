@@ -10,11 +10,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.manuel.receiptorganizer.activities.ListReceiptsActivity;
 import com.example.manuel.receiptorganizer.activities.OverviewReceiptActivity;
 import com.example.manuel.receiptorganizer.activities.SaveReceiptActivity;
 import com.example.manuel.receiptorganizer.activities.SettingsActivity;
+import com.example.manuel.receiptorganizer.database.CategoryOperations;
 import com.example.manuel.receiptorganizer.database.ReceiptOperations;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -28,13 +31,13 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button addReceiptBtn;
+    private RelativeLayout addReceiptBtn;
 
-    private Button receiptListBtn;
+    private RelativeLayout receiptListBtn;
 
-    private Button overviewListBtn;
+    private RelativeLayout overviewListBtn;
 
-    private Button settingsBtn;
+    private ImageView settingsBtn;
 
     static final int REQUEST_TAKE_PHOTO = 0;
 
@@ -43,15 +46,17 @@ public class MainActivity extends AppCompatActivity {
 
     public static ReceiptOperations receiptDBoperation;
 
+    public static CategoryOperations categoryBDoperations;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        addReceiptBtn = (Button) findViewById(R.id.new_receipt);
-        receiptListBtn = (Button) findViewById(R.id.list_receipts_btn);
-        overviewListBtn = (Button) findViewById(R.id.overview_receipts_btn);
-        settingsBtn = (Button) findViewById(R.id.settings);
+        addReceiptBtn = (RelativeLayout) findViewById(R.id.new_receipt);
+        receiptListBtn = (RelativeLayout) findViewById(R.id.list_receipts_btn);
+        overviewListBtn = (RelativeLayout) findViewById(R.id.overview_receipts_btn);
+        settingsBtn = (ImageView) findViewById(R.id.settings);
 
         addReceiptBtn.setOnClickListener(new View.OnClickListener() {
             @Override

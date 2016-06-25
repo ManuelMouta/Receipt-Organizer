@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.manuel.receiptorganizer.R;
 
@@ -15,22 +17,22 @@ import com.example.manuel.receiptorganizer.R;
  * Created by nb21910 on 22/05/16.
  */
 public class SaveReceiptActivity extends AppCompatActivity {
-    private LinearLayout btn1;
-    private LinearLayout btn2;
-    private LinearLayout btn3;
-    private LinearLayout btn4;
-    private LinearLayout btn5;
+    private RelativeLayout btn1;
+    private RelativeLayout btn2;
+    private RelativeLayout btn3;
+    private RelativeLayout btn4;
+    private RelativeLayout btn5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.save_receipt);
 
-        btn1 = (LinearLayout) findViewById(R.id.type1);
-        btn2 = (LinearLayout) findViewById(R.id.type2);
-        btn3 = (LinearLayout) findViewById(R.id.type3);
-        btn4 = (LinearLayout) findViewById(R.id.type4);
-        btn5 = (LinearLayout) findViewById(R.id.type5);
+        btn1 = (RelativeLayout) findViewById(R.id.type1);
+        btn2 = (RelativeLayout) findViewById(R.id.type2);
+        btn3 = (RelativeLayout) findViewById(R.id.type3);
+        btn4 = (RelativeLayout) findViewById(R.id.type4);
+        btn5 = (RelativeLayout) findViewById(R.id.type5);
         Intent intent = getIntent();
         final String receiptPath = intent.getStringExtra("receipPath");
         final String receiptDate = intent.getStringExtra("receipDate");
