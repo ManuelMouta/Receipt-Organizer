@@ -14,6 +14,9 @@ import android.widget.Toast;
 import com.example.manuel.receiptorganizer.MainActivity;
 import com.example.manuel.receiptorganizer.R;
 import com.example.manuel.receiptorganizer.objects.ReceiptObject;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.io.File;
 
@@ -22,6 +25,7 @@ import java.io.File;
  */
 public class SaveReceiptDetailActivity extends AppCompatActivity{
     private Button saveReceiptBtn;
+    private Button discardReceipt;
     private EditText receiptName;
     private EditText total;
     private EditText info;
@@ -34,11 +38,21 @@ public class SaveReceiptDetailActivity extends AppCompatActivity{
         final String receiptPath = intent.getStringExtra("receiptPath");
         final String receiptDate = intent.getStringExtra("receiptDate");
         final String receiptCategory = intent.getStringExtra("receiptCategory");
+        discardReceipt = (Button) findViewById(R.id.discard_receipt);
         receiptName = (EditText) findViewById(R.id.receipt_name_value);
         total = (EditText) findViewById(R.id.receipt_total);
         info = (EditText) findViewById(R.id.receipt_info);
 
         saveReceiptBtn = (Button) findViewById(R.id.save_receipt);
+
+        discardReceipt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
 
         saveReceiptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +72,11 @@ public class SaveReceiptDetailActivity extends AppCompatActivity{
                 }
             }
         });
+
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-5964546814777835/4429291305");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 }
 

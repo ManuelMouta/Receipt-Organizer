@@ -5,7 +5,7 @@
 
     <include
         android:id="@+id/overview_header"
-        layout="@layout/receipt_list_header"
+        layout="@layout/receipt_categories_header"
         ></include>
 
     <include

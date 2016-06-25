@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/header"
-        layout="@layout/receipt_list_header"
+        layout="@layout/receipt_categories_header"
         ></include>
 
     <TextView
