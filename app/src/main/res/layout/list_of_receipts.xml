@@ -5,36 +5,30 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/header"
+        android:id="@+id/receiptslist_header"
         layout="@layout/receipt_categories_header"
         />
-
-    <TextView
-        android:id="@+id/line"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_below="@+id/header"
-        android:background="@color/black"/>
 
     <LinearLayout
         android:id="@+id/header_info"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@+id/line"
-        android:orientation="horizontal">
+        android:layout_below="@+id/receiptslist_header"
+        android:orientation="horizontal"
+        android:background="@color/silver">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:gravity="center"
-            android:text="Nome"/>
+            android:text="Name"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:gravity="center"
-            android:text="Data"/>
+            android:text="Date"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -45,35 +39,22 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:gravity="center"
-            android:text="Categoria"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
             android:layout_weight="2" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/line2"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_below="@+id/header_info"
-        android:background="@color/black"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/receipts_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_below="@+id/line2"
+        android:layout_below="@+id/header_info"
         android:layout_above="@+id/botom_header"
         />
 
     <RelativeLayout
         android:id="@+id/botom_header"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true">
 
         <LinearLayout
@@ -81,7 +62,91 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <Button
+            <LinearLayout
+                android:id="@+id/category"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/category6">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/file"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/category1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/category1">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/food"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/category2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/category2">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/house"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/category3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/category3">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/bills"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/category4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/category4">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/health"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/category5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/category5">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/stuff"/>
+
+            </LinearLayout>
+            <!--<Button
                 android:id="@+id/category"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -122,7 +187,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="5"/>
+                android:text="5"/>-->
 
         </LinearLayout>
     </RelativeLayout>

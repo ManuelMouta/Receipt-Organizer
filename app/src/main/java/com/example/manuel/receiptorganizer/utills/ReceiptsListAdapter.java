@@ -36,7 +36,6 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
         MainActivity.receiptDBoperation.open();
         this.mContext = ctx;
         this.receipts = filterData(filter);
-        this.categories = MainActivity.categoryBDoperations.getAllCategories();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -118,11 +117,5 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
         return receiptsFiltered;
     }
 
-    private String getCategoryName(String categorieNumber) {
-        for(int i = 0;i<categories.size();i++){
-            if(categorieNumber.equals(categories.get(i).getCategoryValue()))
-                return categories.get(i).getCategoryName();
-        }
-        return "";
-    }
+
 }

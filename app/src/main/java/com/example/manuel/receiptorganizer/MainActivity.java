@@ -19,6 +19,7 @@ import com.example.manuel.receiptorganizer.activities.SaveReceiptActivity;
 import com.example.manuel.receiptorganizer.activities.SettingsActivity;
 import com.example.manuel.receiptorganizer.database.CategoryOperations;
 import com.example.manuel.receiptorganizer.database.ReceiptOperations;
+import com.example.manuel.receiptorganizer.objects.CategoryObject;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -39,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView settingsBtn;
 
+    private List<CategoryObject> categories;
+
+    public static CategoryOperations categoryDBoperation;
+
     static final int REQUEST_TAKE_PHOTO = 0;
 
     String mCurrentPhotoPath;
@@ -47,6 +52,18 @@ public class MainActivity extends AppCompatActivity {
     public static ReceiptOperations receiptDBoperation;
 
     public static CategoryOperations categoryBDoperations;
+
+    public static String Category1;
+
+    public static String Category2;
+
+    public static String Category3;
+
+    public static String Category4;
+
+    public static String Category5;
+
+    public static String Category6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,25 +106,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        categoryDBoperation = new CategoryOperations(this);
         receiptDBoperation = new ReceiptOperations(this);
         receiptDBoperation.open();
+        categoryDBoperation.open();
+        loadCategories();
     }
 
     @Override
     protected void onResume() {
         receiptDBoperation.open();
+        categoryDBoperation.open();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
         receiptDBoperation.close();
+        categoryDBoperation.close();
         super.onPause();
     }
 
     @Override
     protected void onStop() {
         receiptDBoperation.close();
+        categoryDBoperation.close();
         super.onStop();
     }
 
@@ -182,5 +205,44 @@ public class MainActivity extends AppCompatActivity {
         return image;
     }
 
+    private void loadCategories(){
+        boolean DBSet = false;
+        categories = categoryDBoperation.getAllCategories();
+        if(categories.isEmpty()){
+            DBSet = true;
+        }else{
+            DBSet = false;
+        }
 
+        if(DBSet){
+            Category1 = "Food";
+            Category2 = "House";
+            Category3 = "Bills";
+            Category4 = "Health";
+            Category5 = "Stuff";
+            Category6 = "Other";
+            categoryDBoperation.addCategory("1",Category1);
+            categoryDBoperation.addCategory("2",Category2);
+            categoryDBoperation.addCategory("3",Category3);
+            categoryDBoperation.addCategory("4",Category4);
+            categoryDBoperation.addCategory("5",Category5);
+            categoryDBoperation.addCategory("6",Category6);
+        }
+        else{
+            for(int i=0;i<categories.size();i++){
+                if(categories.get(i).getCategoryValue().equals("1"))
+                    Category1 = categories.get(i).getCategoryName();
+                if(categories.get(i).getCategoryValue().equals("2"))
+                    Category2 = categories.get(i).getCategoryName();
+                if(categories.get(i).getCategoryValue().equals("3"))
+                    Category3 = categories.get(i).getCategoryName();
+                if(categories.get(i).getCategoryValue().equals("4"))
+                    Category4 = categories.get(i).getCategoryName();
+                if(categories.get(i).getCategoryValue().equals("5"))
+                    Category5 = categories.get(i).getCategoryName();
+                if(categories.get(i).getCategoryValue().equals("6"))
+                    Category6 = categories.get(i).getCategoryName();
+            }
+        }
+    }
 }

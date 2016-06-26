@@ -39,7 +39,7 @@ public class DataBaseWrapper extends SQLiteOpenHelper {
     private static final String CREATE_CATEGORIES_TABLE = "create table " + CATEGORIES
             + "(" + CATEGORY_ID + " integer primary key autoincrement, "
             + CATEGORY_VALUE + " text unique not null,"
-            + CATEGORY_NAME + " text not null;";
+            + CATEGORY_NAME + " text not null);";
 
     public DataBaseWrapper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

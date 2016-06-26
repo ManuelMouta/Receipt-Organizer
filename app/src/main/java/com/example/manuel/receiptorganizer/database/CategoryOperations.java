@@ -47,7 +47,6 @@ public class CategoryOperations {
 
         long categorytId = database.insert(DataBaseWrapper.CATEGORIES, null, values);
 
-        // now that the student is created return it ...
         Cursor cursor = database.query(DataBaseWrapper.CATEGORIES,
                 CATEGORY_TABLE_COLUMNS, DataBaseWrapper.CATEGORY_ID + " = "
                         + categorytId, null, null, null, null);
