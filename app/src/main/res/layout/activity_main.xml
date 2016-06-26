@@ -43,7 +43,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:src="@drawable/ic_settings_black_24dp"/>
+        android:src="@drawable/settingsbtn"/>
 
     <RelativeLayout
         android:id="@+id/new_receipt"
@@ -73,7 +73,7 @@
         android:layout_height="70dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/new_receipt"
-        android:background="@drawable/landpagebtn1"
+        android:background="@drawable/addreciptsbtn"
         >
 
         <TextView
@@ -94,7 +94,7 @@
         android:layout_height="70dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/list_receipts_btn"
-        android:background="@drawable/landpagebtn1"
+        android:background="@drawable/resumebtn"
         >
 
         <TextView
