@@ -30,11 +30,13 @@ import java.util.List;
 public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapter.ViewHolder> {
     private List<ReceiptObject> receipts;
     private Context mContext;
+    private String filter;
     private List<CategoryObject> categories;
 
     public ReceiptsListAdapter(Context ctx,String filter) {
         MainActivity.receiptDBoperation.open();
         this.mContext = ctx;
+        this.filter = filter;
         this.receipts = filterData(filter);
     }
 
@@ -45,6 +47,7 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
         public ImageView info_icon;
         public LinearLayout list_item_layout;
         public LinearLayout info_icon_layout;
+        public TextView ctgTag;
 
         public ViewHolder(View view) {
             super(view);
@@ -54,6 +57,7 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
             info_icon = (ImageView) view.findViewById(R.id.icon_info);
             list_item_layout = (LinearLayout) view.findViewById(R.id.list_item_layout);
             info_icon_layout = (LinearLayout) view.findViewById(R.id.info_icon_layout);
+            ctgTag = (TextView) view.findViewById(R.id.calegorytag);
         }
     }
 
@@ -95,6 +99,20 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
                 holder.itemView.getContext().startActivity(intent);
             }
         });
+
+        if(filter.equals("0")) {
+            if (receipts.get(position).getCategory().equals("1")) {
+                holder.ctgTag.setBackgroundColor(mContext.getResources().getColor(R.color.category1));
+            } else if (receipts.get(position).getCategory().equals("2")) {
+                holder.ctgTag.setBackgroundColor(mContext.getResources().getColor(R.color.category2));
+            } else if (receipts.get(position).getCategory().equals("3")) {
+                holder.ctgTag.setBackgroundColor(mContext.getResources().getColor(R.color.category3));
+            } else if (receipts.get(position).getCategory().equals("4")) {
+                holder.ctgTag.setBackgroundColor(mContext.getResources().getColor(R.color.category4));
+            } else if (receipts.get(position).getCategory().equals("5")) {
+                holder.ctgTag.setBackgroundColor(mContext.getResources().getColor(R.color.category5));
+            }
+        }
     }
 
     @Override

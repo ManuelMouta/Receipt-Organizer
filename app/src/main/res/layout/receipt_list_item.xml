@@ -11,6 +11,11 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical">
 
+        <TextView
+            android:id="@+id/calegorytag"
+            android:layout_width="5dp"
+            android:layout_height="match_parent" />
+
         <LinearLayout
             android:id="@+id/list_item_layout"
             android:orientation="horizontal"
@@ -68,7 +73,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/black"
         android:layout_marginTop="-1dp"/>
 
 </LinearLayout>
