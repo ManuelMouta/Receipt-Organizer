@@ -6,6 +6,17 @@
     android:background="@drawable/header_gradient">
 
     <TextView
+        android:id="@+id/showallbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/showall"
+        android:layout_alignParentBottom="true"
+        android:textSize="16dp"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
         android:id="@+id/receiptsListHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

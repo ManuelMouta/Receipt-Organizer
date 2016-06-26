@@ -41,6 +41,7 @@ public class ListReceiptsActivity extends AppCompatActivity{
     private RelativeLayout header;
     private TextView headerTitle;
     private ImageView headerIcon;
+    private TextView showAllBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +59,11 @@ public class ListReceiptsActivity extends AppCompatActivity{
         headerIcon = (ImageView) findViewById(R.id.header_icon);
         headerTitle = (TextView) findViewById(R.id.receiptsListHeader);
         header = (RelativeLayout) findViewById(R.id.receiptslist_header);
+        showAllBtn = (TextView) findViewById(R.id.showallbtn);
 
         headerTitle.setText("All");
-        header.setBackgroundColor(getResources().getColor(R.color.category6));
+        showAllBtn.setVisibility(View.INVISIBLE);
+        header.setBackgroundColor(getResources().getColor(R.color.BurlyWood));
         headerIcon.setImageResource(R.drawable.file);
 
         mLayoutManager = new LinearLayoutManager(this);
@@ -69,57 +72,73 @@ public class ListReceiptsActivity extends AppCompatActivity{
         mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"0");
         receiptsList.setAdapter(mAdapter);
 
-        categoryBtnClr.setOnClickListener(new View.OnClickListener() {
+        showAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"0");
                 receiptsList.setAdapter(mAdapter);
                 changeHeader("0");
+                showAllBtn.setVisibility(View.INVISIBLE);
+                headerIcon.setImageResource(R.drawable.file);
+            }
+        });
+        categoryBtnClr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"1");
+                receiptsList.setAdapter(mAdapter);
+                changeHeader("1");
+                showAllBtn.setVisibility(View.VISIBLE);
                 headerIcon.setImageResource(R.drawable.file);
             }
         });
         categoryBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"1");
+                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"2");
                 receiptsList.setAdapter(mAdapter);
-                changeHeader("1");
+                changeHeader("2");
+                showAllBtn.setVisibility(View.VISIBLE);
                 headerIcon.setImageResource(R.drawable.food);
             }
         });
         categoryBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"2");
+                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"3");
                 receiptsList.setAdapter(mAdapter);
-                changeHeader("2");
+                changeHeader("3");
+                showAllBtn.setVisibility(View.VISIBLE);
                 headerIcon.setImageResource(R.drawable.house);
             }
         });
         categoryBtn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"3");
+                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"4");
                 receiptsList.setAdapter(mAdapter);
-                changeHeader("3");
+                changeHeader("4");
+                showAllBtn.setVisibility(View.VISIBLE);
                 headerIcon.setImageResource(R.drawable.bills);
             }
         });
         categoryBtn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"4");
+                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"5");
                 receiptsList.setAdapter(mAdapter);
-                changeHeader("4");
+                changeHeader("5");
+                showAllBtn.setVisibility(View.VISIBLE);
                 headerIcon.setImageResource(R.drawable.health);
             }
         });
         categoryBtn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"5");
+                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"6");
                 receiptsList.setAdapter(mAdapter);
-                changeHeader("5");
+                changeHeader("6");
+                showAllBtn.setVisibility(View.VISIBLE);
                 headerIcon.setImageResource(R.drawable.stuff);
             }
         });
@@ -129,7 +148,7 @@ public class ListReceiptsActivity extends AppCompatActivity{
     public void changeHeader(String category){
         if(category.equals("0")){
             headerTitle.setText("All");
-            header.setBackgroundColor(getResources().getColor(R.color.category6));
+            header.setBackgroundColor(getResources().getColor(R.color.BurlyWood));
         }else if(category.equals("1")){
             headerTitle.setText(MainActivity.Category1);
             header.setBackgroundColor(getResources().getColor(R.color.category1));
@@ -145,6 +164,9 @@ public class ListReceiptsActivity extends AppCompatActivity{
         }else if(category.equals("5")){
             headerTitle.setText(MainActivity.Category5);
             header.setBackgroundColor(getResources().getColor(R.color.category5));
+        }else if(category.equals("6")){
+            headerTitle.setText(MainActivity.Category5);
+            header.setBackgroundColor(getResources().getColor(R.color.category6));
         }
     }
 }

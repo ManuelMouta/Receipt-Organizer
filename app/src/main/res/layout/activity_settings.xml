@@ -4,11 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        layout="@layout/receipt_categories_header"
+        ></include>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="50dp"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
         android:text="Categoria 1"
         android:layout_marginLeft="20dp"/>
     <EditText
@@ -16,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/textinput_selector"
-        android:textSize="22dp"
+        android:textSize="18sp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"/>
@@ -24,8 +28,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
         android:text="Categoria 2"
         android:layout_marginLeft="20dp"/>
     <EditText
@@ -33,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/textinput_selector"
-        android:textSize="22dp"
+        android:textSize="18sp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"/>
@@ -41,8 +45,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
         android:text="Categoria 3"
         android:layout_marginLeft="20dp"/>
     <EditText
@@ -50,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/textinput_selector"
-        android:textSize="22dp"
+        android:textSize="18sp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"/>
@@ -58,8 +62,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
         android:text="Categoria 4"
         android:layout_marginLeft="20dp"/>
     <EditText
@@ -67,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/textinput_selector"
-        android:textSize="22dp"
+        android:textSize="18sp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"/>
@@ -75,8 +79,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
         android:text="Categoria 5"
         android:layout_marginLeft="20dp"/>
     <EditText
@@ -84,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/textinput_selector"
-        android:textSize="22dp"
+        android:textSize="18sp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"/>
@@ -92,8 +96,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
         android:text="Categoria 6"
         android:layout_marginLeft="20dp"/>
     <EditText
@@ -101,17 +105,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/textinput_selector"
-        android:textSize="22dp"
+        android:textSize="18sp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"/>
+
 
     <Button
         android:id="@+id/save_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gravar"
+        android:text="Save"
         android:layout_marginTop="15dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/btn_selector"/>
 
 </LinearLayout>
