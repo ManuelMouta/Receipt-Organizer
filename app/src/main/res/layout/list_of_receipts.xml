@@ -63,20 +63,6 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/category"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:background="@color/category6">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/file"/>
-
-            </LinearLayout>
-            <LinearLayout
                 android:id="@+id/category1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -144,6 +130,20 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/stuff"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/category6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/category6">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/file"/>
 
             </LinearLayout>
         </LinearLayout>

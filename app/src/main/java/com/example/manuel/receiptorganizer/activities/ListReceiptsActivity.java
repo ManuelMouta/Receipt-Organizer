@@ -32,7 +32,7 @@ public class ListReceiptsActivity extends AppCompatActivity{
     private ArrayList<String> receipts;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private LinearLayout categoryBtnClr;
+    private LinearLayout categoryBtn6;
     private LinearLayout categoryBtn1;
     private LinearLayout categoryBtn2;
     private LinearLayout categoryBtn3;
@@ -49,7 +49,7 @@ public class ListReceiptsActivity extends AppCompatActivity{
         setContentView(R.layout.list_of_receipts);
 
         receiptsList = (RecyclerView) findViewById(R.id.receipts_list);
-        categoryBtnClr = (LinearLayout) findViewById(R.id.category);
+        categoryBtn6 = (LinearLayout) findViewById(R.id.category6);
         categoryBtn1 = (LinearLayout) findViewById(R.id.category1);
         categoryBtn2 = (LinearLayout) findViewById(R.id.category2);
         categoryBtn3 = (LinearLayout) findViewById(R.id.category3);
@@ -82,12 +82,12 @@ public class ListReceiptsActivity extends AppCompatActivity{
                 headerIcon.setImageResource(R.drawable.file);
             }
         });
-        categoryBtnClr.setOnClickListener(new View.OnClickListener() {
+        categoryBtn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"1");
+                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"6");
                 receiptsList.setAdapter(mAdapter);
-                changeHeader("1");
+                changeHeader("6");
                 showAllBtn.setVisibility(View.VISIBLE);
                 headerIcon.setImageResource(R.drawable.file);
             }
@@ -95,9 +95,9 @@ public class ListReceiptsActivity extends AppCompatActivity{
         categoryBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"2");
+                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"1");
                 receiptsList.setAdapter(mAdapter);
-                changeHeader("2");
+                changeHeader("1");
                 showAllBtn.setVisibility(View.VISIBLE);
                 headerIcon.setImageResource(R.drawable.food);
             }
@@ -105,9 +105,9 @@ public class ListReceiptsActivity extends AppCompatActivity{
         categoryBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"3");
+                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"2");
                 receiptsList.setAdapter(mAdapter);
-                changeHeader("3");
+                changeHeader("2");
                 showAllBtn.setVisibility(View.VISIBLE);
                 headerIcon.setImageResource(R.drawable.house);
             }
@@ -115,9 +115,9 @@ public class ListReceiptsActivity extends AppCompatActivity{
         categoryBtn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"4");
+                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"3");
                 receiptsList.setAdapter(mAdapter);
-                changeHeader("4");
+                changeHeader("3");
                 showAllBtn.setVisibility(View.VISIBLE);
                 headerIcon.setImageResource(R.drawable.bills);
             }
@@ -125,9 +125,9 @@ public class ListReceiptsActivity extends AppCompatActivity{
         categoryBtn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"5");
+                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"4");
                 receiptsList.setAdapter(mAdapter);
-                changeHeader("5");
+                changeHeader("4");
                 showAllBtn.setVisibility(View.VISIBLE);
                 headerIcon.setImageResource(R.drawable.health);
             }
@@ -135,9 +135,9 @@ public class ListReceiptsActivity extends AppCompatActivity{
         categoryBtn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"6");
+                mAdapter = new ReceiptsListAdapter(ListReceiptsActivity.this,"5");
                 receiptsList.setAdapter(mAdapter);
-                changeHeader("6");
+                changeHeader("5");
                 showAllBtn.setVisibility(View.VISIBLE);
                 headerIcon.setImageResource(R.drawable.stuff);
             }
