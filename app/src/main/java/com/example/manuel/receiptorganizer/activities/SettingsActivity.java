@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.manuel.receiptorganizer.MainActivity;
 import com.example.manuel.receiptorganizer.R;
 import com.example.manuel.receiptorganizer.database.CategoryOperations;
 import com.example.manuel.receiptorganizer.objects.CategoryObject;
@@ -53,6 +54,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         saveBtn = (Button) findViewById(R.id.save_btn);
 
+        setLabels();
+
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,5 +79,14 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void setLabels(){
+        category1Value.setText(MainActivity.Category1);
+        category2Value.setText(MainActivity.Category1);
+        category3Value.setText(MainActivity.Category1);
+        category4Value.setText(MainActivity.Category1);
+        category5Value.setText(MainActivity.Category1);
+        category6Value.setText(MainActivity.Category1);
     }
 }

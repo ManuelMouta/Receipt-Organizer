@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/header"
-        android:text="Informação do Recibo"
+        android:text="Receipt Details"
         android:textSize="20dp"
         />
 
@@ -43,8 +43,9 @@
         android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/receipt_info"
-        android:text="Enviar por Email"
-        android:background="@drawable/btn_selector"/>
+        android:text="Send by Email"
+        android:background="@drawable/button1"
+        android:textColor="@color/white"/>
 
 
     <com.google.android.gms.ads.AdView
