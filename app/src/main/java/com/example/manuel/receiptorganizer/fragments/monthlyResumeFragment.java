@@ -93,7 +93,7 @@ public class MonthlyResumeFragment extends Fragment {
         // add a selection listener
         //mChart.setOnChartValueSelectedListener(MonthlyResumeFragment.this);
 
-        setData(5, 1);
+        setData(6, 1);
 
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
         // mChart.spin(2000, 0, 360);
@@ -108,14 +108,26 @@ public class MonthlyResumeFragment extends Fragment {
     private void setData(int count, float range) {
 
         float mult = range;
-        count = 5;
         range = 100;
+        ArrayList<Integer> colors = new ArrayList<Integer>();
         ArrayList<Float> categoryValues = new ArrayList<Float>();
-        categoryValues.add(getCategoryPercent("1"));
-        categoryValues.add(getCategoryPercent("2"));
-        categoryValues.add(getCategoryPercent("3"));
-        categoryValues.add(getCategoryPercent("4"));
-        categoryValues.add(getCategoryPercent("5"));
+        for(int i=0;i<count;i++) {
+            if(getCategoryPercent(Integer.toString(i+1))>0) {
+                categoryValues.add(getCategoryPercent(Integer.toString(i + 1)));
+                if(i==0)
+                    colors.add(getResources().getColor(R.color.category1));
+                if(i==1)
+                    colors.add(getResources().getColor(R.color.category2));
+                if(i==2)
+                    colors.add(getResources().getColor(R.color.category3));
+                if(i==3)
+                    colors.add(getResources().getColor(R.color.category4));
+                if(i==4)
+                    colors.add(getResources().getColor(R.color.category5));
+                if(i==5)
+                    colors.add(getResources().getColor(R.color.category6));
+            }
+        }
 
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
 
@@ -131,38 +143,17 @@ public class MonthlyResumeFragment extends Fragment {
         for (int i = 0; i < count + 1; i++)
             xVals.add(mParties[i % mParties.length]);
 
-        PieDataSet dataSet = new PieDataSet(yVals1, "Categorias");
+        PieDataSet dataSet = new PieDataSet(yVals1, "Categories");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
-
-        // add a lot of colors
-
-        ArrayList<Integer> colors = new ArrayList<Integer>();
-
-        for (int c : ColorTemplate.VORDIPLOM_COLORS)
-            colors.add(c);
-
-        for (int c : ColorTemplate.JOYFUL_COLORS)
-            colors.add(c);
-
-        for (int c : ColorTemplate.COLORFUL_COLORS)
-            colors.add(c);
-
-        for (int c : ColorTemplate.LIBERTY_COLORS)
-            colors.add(c);
-
-        for (int c : ColorTemplate.PASTEL_COLORS)
-            colors.add(c);
-
-        colors.add(ColorTemplate.getHoloBlue());
 
         dataSet.setColors(colors);
         //dataSet.setSelectionShift(0f);
 
         PieData data = new PieData(xVals, dataSet);
         data.setValueFormatter(new PercentFormatter());
-        data.setValueTextSize(11f);
-        data.setValueTextColor(Color.WHITE);
+        data.setValueTextSize(14f);
+        data.setValueTextColor(Color.BLACK);
         data.setValueTypeface(tf);
         mChart.setData(data);
 
