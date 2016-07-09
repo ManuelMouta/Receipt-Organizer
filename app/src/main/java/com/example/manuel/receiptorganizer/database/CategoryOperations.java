@@ -60,7 +60,7 @@ public class CategoryOperations {
 
     public void updateCategoryName(String categoryValue, String categoryName){
         ContentValues cv = new ContentValues();
-        cv.put(DataBaseWrapper.CATEGORY_VALUE,categoryName);
+        cv.put(DataBaseWrapper.CATEGORY_NAME,categoryName);
 
         database.update(DataBaseWrapper.CATEGORIES,cv,DataBaseWrapper.CATEGORY_VALUE + " = "
             + categoryValue,null);

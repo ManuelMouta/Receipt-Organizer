@@ -39,7 +39,8 @@ public class MonthlyResumeFragment extends Fragment {
     private Typeface tf;
 
     private String[] mParties = new String[] {
-            "Casa", "Lola", "Roupa", "Contas", "Diversos"
+            MainActivity.Category1, MainActivity.Category2, MainActivity.Category3,
+            MainActivity.Category4, MainActivity.Category5,MainActivity.Category6
     };
 
     @Override

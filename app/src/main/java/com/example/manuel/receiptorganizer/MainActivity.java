@@ -1,6 +1,8 @@
 package com.example.manuel.receiptorganizer;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
@@ -65,10 +67,15 @@ public class MainActivity extends AppCompatActivity {
 
     public static String Category6;
 
+    public static String currency;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences sharedPref = MainActivity.this.getSharedPreferences("currency",Context.MODE_PRIVATE);
+        currency = sharedPref.getString("currency", "Euros");
 
         addReceiptBtn = (RelativeLayout) findViewById(R.id.new_receipt);
         receiptListBtn = (RelativeLayout) findViewById(R.id.list_receipts_btn);
@@ -209,12 +216,12 @@ public class MainActivity extends AppCompatActivity {
         boolean DBSet = false;
         categories = categoryDBoperation.getAllCategories();
         if(categories.isEmpty()){
-            DBSet = true;
-        }else{
             DBSet = false;
+        }else{
+            DBSet = true;
         }
 
-        if(DBSet){
+        if(!DBSet){
             Category1 = "Food";
             Category2 = "House";
             Category3 = "Bills";
