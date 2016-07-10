@@ -72,11 +72,13 @@ public class AnnualResumeFragment extends Fragment {
 
         // change the position of the y-labels
         YAxis leftAxis = mBarChart.getAxisLeft();
+        leftAxis.setTextSize(10f);
         leftAxis.setValueFormatter(new MyYAxisValueFormatter());
         leftAxis.setAxisMinValue(0f); // this replaces setStartAtZero(true)
         mBarChart.getAxisRight().setEnabled(false);
 
         XAxis xLabels = mBarChart.getXAxis();
+        xLabels.setTextSize(10f);
         xLabels.setPosition(XAxis.XAxisPosition.TOP);
 
         // mChart.setDrawXLabels(false);
@@ -89,6 +91,7 @@ public class AnnualResumeFragment extends Fragment {
         Legend l = mBarChart.getLegend();
         l.setPosition(Legend.LegendPosition.BELOW_CHART_RIGHT);
         l.setFormSize(8f);
+        l.setTextSize(10f);
         l.setFormToTextSpace(4f);
         l.setXEntrySpace(6f);
 
@@ -104,15 +107,37 @@ public class AnnualResumeFragment extends Fragment {
 
         ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
 
+        float [] entryValues = new float[]{};
+
         for (int i = 0; i < 12; i++) {
             float mult = (1);
-            float val1 = getCategoryValue(String.valueOf(i+1),"1");
-            float val2 = getCategoryValue(String.valueOf(i+1),"2");
-            float val3 = getCategoryValue(String.valueOf(i+1),"3");
-            float val4 = getCategoryValue(String.valueOf(i+1),"4");
-            float val5 = getCategoryValue(String.valueOf(i+1),"5");
+            List<Float> ListValues = new ArrayList<Float>();
+            if(getCategoryValue(String.valueOf(i+1),"1")>0){
+                float val1 = getCategoryValue(String.valueOf(i+1),"1");
+                ListValues.add(val1);
+            }
+            if(getCategoryValue(String.valueOf(i+1),"2")>0){
+                float val2 = getCategoryValue(String.valueOf(i+1),"2");
+                ListValues.add(val2);
+            }
+            if(getCategoryValue(String.valueOf(i+1),"3")>0){
+                float val3 = getCategoryValue(String.valueOf(i+1),"3");
+                ListValues.add(val3);
+            }
+            if(getCategoryValue(String.valueOf(i+1),"4")>0){
+                float val4 = getCategoryValue(String.valueOf(i+1),"4");
+                ListValues.add(val4);
+            }
+            if(getCategoryValue(String.valueOf(i+1),"5")>0){
+                float val5 = getCategoryValue(String.valueOf(i+1),"5");
+                ListValues.add(val5);
+            }
+            if(getCategoryValue(String.valueOf(i+1),"6")>0){
+                float val6 = getCategoryValue(String.valueOf(i+1),"6");
+                ListValues.add(val6);
+            }
 
-            yVals1.add(new BarEntry(new float[] { val1, val2, val3, val4, val5 }, i));
+            yVals1.add(new BarEntry(getFloats(ListValues), i));
         }
 
         BarDataSet set1;
@@ -125,9 +150,10 @@ public class AnnualResumeFragment extends Fragment {
             mBarChart.getData().notifyDataChanged();
             mBarChart.notifyDataSetChanged();
         } else {
-            set1 = new BarDataSet(yVals1, "Categorias");
+            set1 = new BarDataSet(yVals1, "");
             set1.setColors(getColors());
-            set1.setStackLabels(new String[]{"Casa", "Lola", "Roupa","Contas","Diversos"});
+            set1.setStackLabels(new String[]{MainActivity.Category1,MainActivity.Category2,MainActivity.Category3,
+                    MainActivity.Category4,MainActivity.Category5,MainActivity.Category6,});
 
             ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
             dataSets.add(set1);
@@ -139,6 +165,15 @@ public class AnnualResumeFragment extends Fragment {
         }
 
         mBarChart.invalidate();
+    }
+
+    public static float[] getFloats(List<Float> values) {
+        int length = values.size();
+        float[] result = new float[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = values.get(i).floatValue();
+        }
+        return result;
     }
 
     private float getCategoryValue(String month,String category){
@@ -159,13 +194,24 @@ public class AnnualResumeFragment extends Fragment {
 
     private int[] getColors() {
 
-        int stacksize = 5;
+        int stacksize = 6;
 
         // have as many colors as stack-values per entry
         int[] colors = new int[stacksize];
 
         for (int i = 0; i < stacksize; i++) {
-            colors[i] = ColorTemplate.VORDIPLOM_COLORS[i];
+            if(i==0)
+                colors[i]=getResources().getColor(R.color.category1);
+            if(i==1)
+                colors[i]=getResources().getColor(R.color.category2);
+            if(i==2)
+                colors[i]=getResources().getColor(R.color.category3);
+            if(i==3)
+                colors[i]=getResources().getColor(R.color.category4);
+            if(i==4)
+                colors[i]=getResources().getColor(R.color.category5);
+            if(i==5)
+                colors[i]=getResources().getColor(R.color.category6);
         }
 
         return colors;
