@@ -165,7 +165,7 @@ public class ListReceiptsActivity extends AppCompatActivity{
             headerTitle.setText(MainActivity.Category5);
             header.setBackgroundColor(getResources().getColor(R.color.category5));
         }else if(category.equals("6")){
-            headerTitle.setText(MainActivity.Category5);
+            headerTitle.setText(MainActivity.Category6);
             header.setBackgroundColor(getResources().getColor(R.color.category6));
         }
     }

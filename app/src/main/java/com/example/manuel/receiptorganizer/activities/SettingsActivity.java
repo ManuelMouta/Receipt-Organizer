@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.manuel.receiptorganizer.MainActivity;
 import com.example.manuel.receiptorganizer.R;
@@ -43,6 +45,12 @@ public class SettingsActivity extends AppCompatActivity {
 
     private Button saveBtn;
 
+    private TextView title;
+
+    private ImageView headerIcon;
+
+    private TextView showAll;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
@@ -61,7 +69,13 @@ public class SettingsActivity extends AppCompatActivity {
 
         saveBtn = (Button) findViewById(R.id.save_btn);
 
+        title = (TextView) findViewById(R.id.receiptsListHeader);
+
+        headerIcon = (ImageView) findViewById(R.id.header_icon);
+
         currency = (Spinner) findViewById(R.id.currency);
+
+        showAll = (TextView) findViewById(R.id.showallbtn);
 
         setLabels();
 
@@ -118,6 +132,9 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void setLabels(){
+        title.setText("Settings");
+        headerIcon.setVisibility(View.INVISIBLE);
+        showAll.setVisibility(View.INVISIBLE);
         category1Value.setText(MainActivity.Category1);
         category2Value.setText(MainActivity.Category2);
         category3Value.setText(MainActivity.Category3);

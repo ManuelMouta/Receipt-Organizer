@@ -22,6 +22,7 @@ public class SaveReceiptActivity extends AppCompatActivity {
     private RelativeLayout btn3;
     private RelativeLayout btn4;
     private RelativeLayout btn5;
+    private RelativeLayout btn6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class SaveReceiptActivity extends AppCompatActivity {
         btn3 = (RelativeLayout) findViewById(R.id.type3);
         btn4 = (RelativeLayout) findViewById(R.id.type4);
         btn5 = (RelativeLayout) findViewById(R.id.type5);
+        btn6 = (RelativeLayout) findViewById(R.id.type6);
         Intent intent = getIntent();
         final String receiptPath = intent.getStringExtra("receipPath");
         final String receiptDate = intent.getStringExtra("receipDate");
@@ -84,6 +86,16 @@ public class SaveReceiptActivity extends AppCompatActivity {
                 intent.putExtra("receiptPath",receiptPath);
                 intent.putExtra("receiptDate",receiptDate);
                 intent.putExtra("receiptCategory","5");
+                startActivity(intent);
+            }
+        });
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SaveReceiptActivity.this,SaveReceiptDetailActivity.class);
+                intent.putExtra("receiptPath",receiptPath);
+                intent.putExtra("receiptDate",receiptDate);
+                intent.putExtra("receiptCategory","6");
                 startActivity(intent);
             }
         });

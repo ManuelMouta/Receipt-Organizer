@@ -18,29 +18,43 @@
         android:supportsRtl="true"
         android:debuggable="true"
         android:theme="@style/NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ListReceiptsActivity">
+            android:name=".activities.ListReceiptsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activities.SaveReceiptActivity">
+            android:name=".activities.SaveReceiptActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activities.SaveReceiptDetailActivity">
+            android:name=".activities.SaveReceiptDetailActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activities.ReceiptInfoActivity">
+            android:name=".activities.ReceiptInfoActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activities.OverviewReceiptActivity">
+            android:name=".activities.OverviewReceiptActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activities.SettingsActivity">
+            android:name=".activities.SettingsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
