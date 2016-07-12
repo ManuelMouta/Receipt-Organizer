@@ -32,6 +32,7 @@
                 android:layout_centerVertical="true"/>
 
             <TextView
+                android:id="@+id/btn1_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/foodicon"
@@ -59,6 +60,7 @@
                 android:layout_centerVertical="true"/>
 
             <TextView
+                android:id="@+id/btn2_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/houseicon"
@@ -96,6 +98,7 @@
                 android:layout_centerVertical="true"/>
 
             <TextView
+                android:id="@+id/btn3_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/billsicon"
@@ -123,6 +126,7 @@
                 android:layout_centerVertical="true"/>
 
             <TextView
+                android:id="@+id/btn4_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/heathicon"
@@ -160,6 +164,7 @@
                 android:layout_centerVertical="true"/>
 
             <TextView
+                android:id="@+id/btn5_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/stufficon"
@@ -187,6 +192,7 @@
                 android:layout_centerVertical="true"/>
 
             <TextView
+                android:id="@+id/btn6_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/othericon"

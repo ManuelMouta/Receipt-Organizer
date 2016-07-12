@@ -26,6 +26,10 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
 
     private TextView annualResumeBtn;
 
+    private TextView showAll;
+
+    private TextView title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,14 +52,10 @@ public class OverviewReceiptActivity extends DemoBase implements SeekBar.OnSeekB
         overviewBtn.setTextColor(Color.WHITE);
         annualResumeBtn.setTextColor(Color.BLACK);
 
-        /*Fragment fr = new MonthlyResumeFragment();
-
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(R.id.chart_fragment, fr);
-        fragmentTransaction.commit();*/
-
-//      final ColorStateList oldColors =  overviewBtn.getTextColors();
+        showAll = (TextView) findViewById(R.id.showallbtn);
+        showAll.setVisibility(View.INVISIBLE);
+        title = (TextView) findViewById(R.id.receiptsListHeader);
+        title.setText("RESUME");
 
         overviewBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -87,7 +87,7 @@ public class MonthlyResumeFragment extends Fragment {
         mChart.setRotationEnabled(true);
         mChart.setHighlightPerTapEnabled(true);
 
-        // mChart.setUnit(" €");
+        //mChart.setUnit(" €");
         // mChart.setDrawUnitsInChart(true);
 
         // add a selection listener

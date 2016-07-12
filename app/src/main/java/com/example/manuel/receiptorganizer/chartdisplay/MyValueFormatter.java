@@ -1,5 +1,6 @@
 package com.example.manuel.receiptorganizer.chartdisplay;
 
+import com.example.manuel.receiptorganizer.MainActivity;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
@@ -16,6 +17,13 @@ public class MyValueFormatter implements ValueFormatter {
 
     @Override
     public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
-        return mFormat.format(value) + " €";
+        String Unit = "";
+        if(MainActivity.currency.equals("Euros"))
+            Unit = " €";
+        if(MainActivity.currency.equals("Dollars"))
+            Unit = " $";
+        if(MainActivity.currency.equals("Pounds"))
+            Unit = " £";
+        return mFormat.format(value) + Unit;
     }
 }

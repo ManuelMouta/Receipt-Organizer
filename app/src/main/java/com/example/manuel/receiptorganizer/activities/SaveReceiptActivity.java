@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.manuel.receiptorganizer.MainActivity;
 import com.example.manuel.receiptorganizer.R;
 
 /**
@@ -23,6 +24,15 @@ public class SaveReceiptActivity extends AppCompatActivity {
     private RelativeLayout btn4;
     private RelativeLayout btn5;
     private RelativeLayout btn6;
+    private TextView btn1Label;
+    private TextView btn2Label;
+    private TextView btn3Label;
+    private TextView btn4Label;
+    private TextView btn5Label;
+    private TextView btn6Label;
+
+
+    private TextView showAllBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +45,22 @@ public class SaveReceiptActivity extends AppCompatActivity {
         btn4 = (RelativeLayout) findViewById(R.id.type4);
         btn5 = (RelativeLayout) findViewById(R.id.type5);
         btn6 = (RelativeLayout) findViewById(R.id.type6);
+        btn1Label = (TextView) findViewById(R.id.btn1_label);
+        btn2Label = (TextView) findViewById(R.id.btn2_label);
+        btn3Label = (TextView) findViewById(R.id.btn3_label);
+        btn4Label = (TextView) findViewById(R.id.btn4_label);
+        btn5Label = (TextView) findViewById(R.id.btn5_label);
+        btn6Label = (TextView) findViewById(R.id.btn6_label);
+        btn1Label.setText(MainActivity.Category1);
+        btn2Label.setText(MainActivity.Category2);
+        btn3Label.setText(MainActivity.Category3);
+        btn4Label.setText(MainActivity.Category4);
+        btn5Label.setText(MainActivity.Category5);
+        btn6Label.setText(MainActivity.Category6);
+
+
+        showAllBtn = (TextView) findViewById(R.id.showallbtn);
+        showAllBtn.setVisibility(View.INVISIBLE);
         Intent intent = getIntent();
         final String receiptPath = intent.getStringExtra("receipPath");
         final String receiptDate = intent.getStringExtra("receipDate");

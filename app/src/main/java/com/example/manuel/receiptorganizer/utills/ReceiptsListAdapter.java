@@ -111,7 +111,7 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
                 holder.ctgTag.setBackgroundColor(mContext.getResources().getColor(R.color.category4));
             } else if (receipts.get(position).getCategory().equals("5")) {
                 holder.ctgTag.setBackgroundColor(mContext.getResources().getColor(R.color.category5));
-            }else if (receipts.get(position).getCategory().equals("5")) {
+            }else if (receipts.get(position).getCategory().equals("6")) {
                 holder.ctgTag.setBackgroundColor(mContext.getResources().getColor(R.color.category6));
             }
         }

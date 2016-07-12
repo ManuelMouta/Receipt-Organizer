@@ -7,6 +7,7 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.manuel.receiptorganizer.R;
@@ -22,6 +23,8 @@ import java.io.File;
 public class ReceiptInfoActivity extends AppCompatActivity {
     private TextView receiptInfoText;
     private Button send_email_btn;
+    private TextView showAll;
+    private TextView title;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,10 @@ public class ReceiptInfoActivity extends AppCompatActivity {
         send_email_btn = (Button) findViewById(R.id.send_email_btn);
         receiptInfoText = (TextView) findViewById(R.id.receipt_info);
         receiptInfoText.setText(receiptInfo);
+        showAll = (TextView) findViewById(R.id.showallbtn);
+        showAll.setVisibility(View.INVISIBLE);
+        title = (TextView) findViewById(R.id.receiptsListHeader);
+        title.setText("INFO");
 
         send_email_btn.setOnClickListener(new View.OnClickListener() {
             @Override

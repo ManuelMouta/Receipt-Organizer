@@ -12,7 +12,7 @@
         android:layout_weight="1"
         android:textSize="17dp"
         android:textStyle="bold"
-        android:text="Resumo"
+        android:text="Monthly"
         />
     <TextView
         android:id="@+id/btn2"
@@ -22,7 +22,7 @@
         android:layout_weight="1"
         android:textSize="17dp"
         android:textStyle="bold"
-        android:text="Histórico"/>
+        android:text="Annually"/>
     />
 
 </LinearLayout>
