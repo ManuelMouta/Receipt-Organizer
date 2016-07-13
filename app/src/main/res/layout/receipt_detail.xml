@@ -110,17 +110,16 @@
 
         <Button
             android:id="@+id/save_receipt"
-            android:layout_width="140dp"
+            android:layout_width="160dp"
             android:layout_height="60dp"
             android:text="Save"
             android:textColor="@color/white"
             android:textSize="16dp"
             android:layout_marginRight="25dp"
             android:background="@drawable/save_btn"/>
-
         <Button
             android:id="@+id/discard_receipt"
-            android:layout_width="140dp"
+            android:layout_width="160dp"
             android:layout_height="60dp"
             android:textColor="@color/white"
             android:text="Discard"
