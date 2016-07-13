@@ -1,6 +1,7 @@
 package com.example.manuel.receiptorganizer.activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -72,11 +73,31 @@ public class SaveReceiptDetailActivity extends AppCompatActivity{
                 }
             }
         });
+        new LongOperation().execute("");
+    }
 
-        MobileAds.initialize(getApplicationContext(), "ca-app-pub-5964546814777835/4429291305");
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+    private class LongOperation extends AsyncTask<String, Void, String> {
+        protected AdRequest adRequest;
+        @Override
+        protected String doInBackground(String... params) {
+            MobileAds.initialize(getApplicationContext(), "ca-app-pub-5964546814777835/4429291305");
+            adRequest = new AdRequest.Builder().build();
+            return "done";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if(result.equals("done")) {
+                AdView mAdView = (AdView) findViewById(R.id.adView);
+                mAdView.loadAd(adRequest);
+            }
+        }
+
+        @Override
+        protected void onPreExecute() {}
+
+        @Override
+        protected void onProgressUpdate(Void... values) {}
     }
 }
 
