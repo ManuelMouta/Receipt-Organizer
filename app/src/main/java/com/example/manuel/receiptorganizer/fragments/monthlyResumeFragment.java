@@ -140,8 +140,10 @@ public class MonthlyResumeFragment extends Fragment {
 
         ArrayList<String> xVals = new ArrayList<String>();
 
-        for (int i = 0; i < count + 1; i++)
-            xVals.add(mParties[i % mParties.length]);
+        for (int i = 0; i < count + 1; i++) {
+            if (getCategoryPercent(Integer.toString(i + 1)) > 0)
+                xVals.add(mParties[i % mParties.length]);
+        }
 
         PieDataSet dataSet = new PieDataSet(yVals1, "Categories");
         dataSet.setSliceSpace(3f);

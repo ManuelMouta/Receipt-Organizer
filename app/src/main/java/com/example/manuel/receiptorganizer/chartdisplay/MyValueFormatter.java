@@ -24,6 +24,9 @@ public class MyValueFormatter implements ValueFormatter {
             Unit = " $";
         if(MainActivity.currency.equals("Pounds"))
             Unit = " £";
-        return mFormat.format(value) + Unit;
+        if(value>0)
+            return mFormat.format(value) + Unit;
+        else
+            return "";
     }
 }

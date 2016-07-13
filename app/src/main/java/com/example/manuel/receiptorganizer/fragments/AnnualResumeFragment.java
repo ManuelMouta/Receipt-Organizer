@@ -112,32 +112,35 @@ public class AnnualResumeFragment extends Fragment {
         for (int i = 0; i < 12; i++) {
             float mult = (1);
             List<Float> ListValues = new ArrayList<Float>();
-            if(getCategoryValue(String.valueOf(i+1),"1")>0){
+            if(getCategoryValue(String.valueOf(i+1),"1")>=0){
                 float val1 = getCategoryValue(String.valueOf(i+1),"1");
                 ListValues.add(val1);
             }
-            if(getCategoryValue(String.valueOf(i+1),"2")>0){
+            if(getCategoryValue(String.valueOf(i+1),"2")>=0){
                 float val2 = getCategoryValue(String.valueOf(i+1),"2");
                 ListValues.add(val2);
             }
-            if(getCategoryValue(String.valueOf(i+1),"3")>0){
+            if(getCategoryValue(String.valueOf(i+1),"3")>=0){
                 float val3 = getCategoryValue(String.valueOf(i+1),"3");
                 ListValues.add(val3);
             }
-            if(getCategoryValue(String.valueOf(i+1),"4")>0){
+            if(getCategoryValue(String.valueOf(i+1),"4")>=0){
                 float val4 = getCategoryValue(String.valueOf(i+1),"4");
                 ListValues.add(val4);
             }
-            if(getCategoryValue(String.valueOf(i+1),"5")>0){
+            if(getCategoryValue(String.valueOf(i+1),"5")>=0){
                 float val5 = getCategoryValue(String.valueOf(i+1),"5");
                 ListValues.add(val5);
             }
-            if(getCategoryValue(String.valueOf(i+1),"6")>0){
+            if(getCategoryValue(String.valueOf(i+1),"6")>=0){
                 float val6 = getCategoryValue(String.valueOf(i+1),"6");
                 ListValues.add(val6);
             }
 
-            yVals1.add(new BarEntry(getFloats(ListValues), i));
+            if(ListValues.size()==0)
+                yVals1.add(new BarEntry(new float[] { 0, 0, 0, 0, 0, 0 }, i));
+            else
+                yVals1.add(new BarEntry(getFloats(ListValues), i));
         }
 
         BarDataSet set1;
