@@ -41,7 +41,7 @@ public class ReceiptOperations {
         dbHelper.close();
     }
 
-    public ReceiptObject addReceipt(String name,String category,String path,int total,String info,String Date) {
+    public ReceiptObject addReceipt(String name,String category,String path,float total,String info,String Date) {
 
         ContentValues values = new ContentValues();
 
@@ -96,7 +96,7 @@ public class ReceiptOperations {
         receipt.setName(cursor.getString(1));
         receipt.setCategory(cursor.getString(2));
         receipt.setPath(cursor.getString(3));
-        receipt.setTotal(cursor.getInt(4));
+        receipt.setTotal(cursor.getFloat(4));
         receipt.setInfo(cursor.getString(5));
         receipt.setDate(cursor.getString(6));
 

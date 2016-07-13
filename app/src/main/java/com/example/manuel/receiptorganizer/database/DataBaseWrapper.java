@@ -32,7 +32,7 @@ public class DataBaseWrapper extends SQLiteOpenHelper {
             + RECEIPT_NAME + " text not null,"
             + RECEIPT_PATH + " text not null,"
             + RECEIPT_CATEGORY + " text not null,"
-            + RECEIPT_TOTAL + " integer,"
+            + RECEIPT_TOTAL + " real,"
             + RECEIPT_INFO + " text,"
             + RECEIPT_DATE + " text);";
 

@@ -9,7 +9,7 @@ public class ReceiptObject {
     private String name;
     private String date;
     private String category;
-    private int total;
+    private float total;
     private String info;
 
     public int getId() {
@@ -52,11 +52,11 @@ public class ReceiptObject {
         this.category = category;
     }
 
-    public int getTotal() {
+    public float getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(float total) {
         this.total = total;
     }
 

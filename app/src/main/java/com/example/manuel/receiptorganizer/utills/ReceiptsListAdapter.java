@@ -72,11 +72,11 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
     @Override
     public void onBindViewHolder(final ReceiptsListAdapter.ViewHolder holder, final int position) {
         final String receiptName = receipts.get(position).getName();
-        final int receiptTotal = receipts.get(position).getTotal();
+        final float receiptTotal = receipts.get(position).getTotal();
         final String receiptDate = receipts.get(position).getDate();
 
         holder.receiptName.setText(receiptName);
-        holder.receiptTotal.setText(Integer.toString(receiptTotal)+" €");
+        holder.receiptTotal.setText(Float.toString(receiptTotal)+" €");
         holder.receiptDate.setText(receiptDate);
 
         holder.info_icon_layout.setOnClickListener(new View.OnClickListener() {

@@ -61,7 +61,7 @@ public class SaveReceiptDetailActivity extends AppCompatActivity{
 
                     MainActivity.receiptDBoperation.open();
                     MainActivity.receiptDBoperation.addReceipt(
-                            receiptName.getText().toString(),receiptCategory,receiptPath,Integer.parseInt((total.getText().toString())),info.getText().toString(),receiptDate);
+                            receiptName.getText().toString(),receiptCategory,receiptPath,Float.parseFloat((total.getText().toString())),info.getText().toString(),receiptDate);
 
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
