@@ -80,7 +80,7 @@ public class SaveReceiptDetailActivity extends AppCompatActivity{
         protected AdRequest adRequest;
         @Override
         protected String doInBackground(String... params) {
-            MobileAds.initialize(getApplicationContext(), "ca-app-pub-5964546814777835/4429291305");
+            MobileAds.initialize(getApplicationContext(), "ca-app-pub-5964546814777835/2898194502");
             adRequest = new AdRequest.Builder().build();
             return "done";
         }

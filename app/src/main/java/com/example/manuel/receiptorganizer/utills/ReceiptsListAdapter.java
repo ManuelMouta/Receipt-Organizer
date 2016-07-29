@@ -93,10 +93,16 @@ public class ReceiptsListAdapter extends RecyclerView.Adapter<ReceiptsListAdapte
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.setDataAndType(Uri.fromFile(new File(receipts.get(position).getPath())), "image/*");
-                holder.itemView.getContext().startActivity(intent);
+                try {
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.setDataAndType(Uri.fromFile(new File(receipts.get(position).getPath())), "image/*");
+                    holder.itemView.getContext().startActivity(intent);
+                }catch(Exception e){
+                    Toast.makeText(mContext, "This receipt has been deleted.",
+                            Toast.LENGTH_LONG).show();
+                    MainActivity.receiptDBoperation.deleteReceipt(receipts.get(position));
+                }
             }
         });
 

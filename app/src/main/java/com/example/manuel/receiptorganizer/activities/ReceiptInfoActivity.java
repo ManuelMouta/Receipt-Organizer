@@ -57,7 +57,7 @@ public class ReceiptInfoActivity extends AppCompatActivity {
             }
         });
 
-        MobileAds.initialize(getApplicationContext(), "ca-app-pub-5964546814777835/4429291305");
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-5964546814777835/1421461302");
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);

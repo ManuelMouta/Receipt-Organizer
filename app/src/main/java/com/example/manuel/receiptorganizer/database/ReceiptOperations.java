@@ -66,8 +66,8 @@ public class ReceiptOperations {
         return newComment;
     }
 
-    public void deleteReceipt(ReceiptObject comment) {
-        long id = comment.getId();
+    public void deleteReceipt(ReceiptObject receipt) {
+        long id = receipt.getId();
         System.out.println("Comment deleted with id: " + id);
         database.delete(DataBaseWrapper.RECEIPTS, DataBaseWrapper.RECEIPT_ID
                 + " = " + id, null);
