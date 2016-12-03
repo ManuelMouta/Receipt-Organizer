@@ -1,23 +1,26 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 22
+    buildToolsVersion "24.0.3"
 
     defaultConfig {
         applicationId "com.example.manuel.receiptorganizer"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            debug {
-                debuggable true
-            }
+            resValue "string", "app_name", "Wallet Manager"
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+            resValue "string", "app_name", "Wallet Manager-DEV"
         }
     }
 }
@@ -25,7 +28,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.android.support:recyclerview-v7:+'
     compile 'com.google.firebase:firebase-ads:9.0.1'
     compile 'io.realm:realm-android:0.87.5'
